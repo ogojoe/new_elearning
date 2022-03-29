@@ -12,6 +12,10 @@
     @apply text-xl text-gray-700 mb-2 leading-4;
 }
 
+.form-input{
+    @apply shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+}
+
 .embed-responsive{
     position: relative;
     overflow: hidden;
