@@ -30,8 +30,9 @@ class CoursesLesson extends Component
     {
         $rules = [
             'name'=> 'required',
-            'url' =>  ['required', 'regex:%^ (?:https?://)? (?:www\.)? (?: youtu\.be/ | youtube\.com (?: /embed/ | /v/ | /watch\?v= ) ) ([\w-]{10,12}) $%x']
+            'url' => ['required', 'regex:%^ (?:https?://)? (?:www\.)? (?: youtu\.be/ | youtube\.com (?: /embed/ | /v/ | /watch\?v= ) ) ([\w-]{10,12}) $%x']
         ];
+
         if ($this->platform_id == 2) {
             $rules['url'] = ['required', 'regex:/\/\/(www\.)?vimeo.com\/(\d+)($|\/)/'];
         }
@@ -46,7 +47,10 @@ class CoursesLesson extends Component
         ]);
 
         $this->reset(['name','platform_id','url']);
+        
         $this->section = Section::find($this->section->id);
+
+
     }
 
     public function edit(Lesson $lesson)
@@ -62,6 +66,7 @@ class CoursesLesson extends Component
         $this->validate();
         $this->lesson->save();
         $this->lesson = new Lesson();
+
         $this->section = Section::find($this->section->id);
     }
 

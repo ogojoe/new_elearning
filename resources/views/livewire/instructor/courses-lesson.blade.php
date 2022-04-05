@@ -1,9 +1,9 @@
 <div>
     @foreach ($section->lessons as $item)
-        <article class="card mt-4">
+        <article class="card mt-4" x-data="{open: false}">
             <div class="card-body">
                 @if ($lesson->id == $item->id)
-                    <div>
+                    <form wire:submit.prevent="update">
                         <div class="flex items-center">
                             <label class="w-32">Nombre:</label>
                             <input wire:model="lesson.name" class="form-input w-full">
@@ -35,25 +35,38 @@
                         @enderror
 
                         <div class="mt-4 flex justify-end">
-                            <button class="btn btn-primary" wire:click="update">Actualizar</button>
-                            <button class="btn btn-danger ml-2" wire:click="cancel" >Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                            <button type="button" class="btn btn-danger ml-2" wire:click="cancel" >Cancelar</button>
                         </div>
 
-
-                    </div>
+                    </form>
 
                 @else
-                    <header><h1><i class="far fa-play-circle text-blue-500 mr-1"></i> Lección: {{$item->name}}</h1></header>
+                    <header>
+                        <h1 x-on:click="open = !open" class="cursor-pointer">
+                            <i class="far fa-play-circle text-blue-500 mr-1"></i> 
+                            Lección: {{$item->name}}
+                        </h1>
+                    </header>
 
-                    <div>
+                    <div x-show="open">
                         <hr class="my-2">
                         <p class="text-sm">Plataforma: {{$item->platform->name}}</p>
                         <p class="text-sm">Enlace: <a class="text-blue-600" href="{{$item->url}}" target="_blank">{{$item->url}}</a></p>
                         
-                        <div class="mt-2">
+                        <div class="my-2">
                             <button class="btn btn-primary text-sm" wire:click="edit({{$item}})">Editar</button>
                             <button class="btn btn-danger text-sm" wire:click="destroy({{$item}})">Eliminar</button>
                         </div>
+
+                        <div class="mb-4">
+                            @livewire('instructor.lesson-description', ['lesson' => $item], key('lesson-description' . $item->id))
+                        </div>
+
+                        <div>
+                            @livewire('instructor.lesson-resources', ['lesson' => $item], key('lesson-resources' . $item->id))
+                        </div>
+                        
                     </div>
                 @endif
                 

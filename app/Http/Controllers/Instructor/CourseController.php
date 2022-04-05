@@ -69,23 +69,11 @@ class CourseController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  Course $course
-     * @return \Illuminate\Http\Response
-     */
     public function show(Course $course)
     {
         return view('instructor.courses.show',compact('course'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  Course $course
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Course $course)
     {
         $categories = Category::pluck('name', 'id');
@@ -95,13 +83,6 @@ class CourseController extends Controller
         return view('instructor.courses.edit',compact('course','categories','levels', 'prices'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  Course $course
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Course $course)
     {
         $request->validate([
@@ -132,14 +113,12 @@ class CourseController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  Course $course
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Course $course)
     {
         //
+    }
+
+    public function goals(Course $course){
+        return view('instructor.courses.goals',compact('course'));
     }
 }
