@@ -29,11 +29,13 @@ class CoursesAudiences extends Component
         $this->validate([
             'name'=>'required'
         ]);
-        $this->course->Audiences()->create([
+        $this->course->audiences()->create([
             'name'=>$this->name
         ]);
+
         $this->reset('name');
 
+        $this->course = Course::find($this->course->id);
     }
 
     public function edit(Audience $audience)

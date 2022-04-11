@@ -33,7 +33,7 @@ class CoursesGoals extends Component
             'name'=>$this->name
         ]);
         $this->reset('name');
-
+        $this->course = Course::find($this->course->id);
     }
 
     public function edit(Goal $goal)

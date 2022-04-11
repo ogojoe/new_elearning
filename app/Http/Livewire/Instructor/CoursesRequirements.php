@@ -28,11 +28,14 @@ class CoursesRequirements extends Component
         $this->validate([
             'name'=>'required'
         ]);
-        $this->course->Requirements()->create([
+
+        $this->course->requirements()->create([
             'name'=>$this->name
         ]);
+
         $this->reset('name');
 
+        $this->course = Course::find($this->course->id);
     }
 
     public function edit(Requirement $requirement)

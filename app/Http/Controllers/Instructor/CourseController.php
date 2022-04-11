@@ -14,21 +14,19 @@ use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('can:Leer cursos')->only('index');
+        $this->middleware('can:Crear cursos')->only('create','store');
+        $this->middleware('can:Actualizar cursos')->only('edit', 'update','goals');
+        $this->middleware('can:Eliminar cursos')->only('destroy');
+    }
+
     public function index()
     {
         return view('instructor.courses.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $categories = Category::pluck('name', 'id');
@@ -37,12 +35,6 @@ class CourseController extends Controller
         return view('instructor.courses.create',compact('categories','levels','prices'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -76,6 +68,7 @@ class CourseController extends Controller
 
     public function edit(Course $course)
     {
+        $this->authorize('dictated', $course);
         $categories = Category::pluck('name', 'id');
         $levels =Level::pluck('name', 'id');
         $prices = Price::pluck('name', 'id');
@@ -85,6 +78,7 @@ class CourseController extends Controller
 
     public function update(Request $request, Course $course)
     {
+        $this->authorize('dictated', $course);
         $request->validate([
             'title'=>'required|unique:courses,slug,'.$course->id,
             'slug'=>'required',
@@ -119,6 +113,13 @@ class CourseController extends Controller
     }
 
     public function goals(Course $course){
+        $this->authorize('dictated', $course);
         return view('instructor.courses.goals',compact('course'));
+    }
+
+    public function status(Course $course){
+        $course->status = 2;
+        $course->save();
+        return back();
     }
 }

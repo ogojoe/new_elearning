@@ -34,7 +34,7 @@
                     <h1 class="font-bold text-lg mb-4">
                         Edición del curso
                     </h1>
-                    <ul class="text-sm text-gray-600">
+                    <ul class="text-sm text-gray-600 mb-4">
                         <li class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.edit', $course) border-indigo-400 @else border-transparent @endif pl-2">
                             <a href="{{route('instructor.courses.edit', $course)}}">Información del curso</a>
                         </li>
@@ -44,11 +44,32 @@
                         <li class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.goals', $course) border-indigo-400 @else border-transparent @endif pl-2">
                             <a href="{{route('instructor.courses.goals', $course)}}">Metas</a>
                         </li>
-                        <li class="leading-7 mb-1 border-l-4 border-transparent pl-2">
-                            <a href="">Estudiantes</a>
+                        <li class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.students', $course) border-indigo-400 @else border-transparent @endif pl-2">
+                            <a href="{{route('instructor.courses.students', $course)}}">Estudiantes</a>
                         </li>
                         
                     </ul>
+                    @switch($course->status)
+                            @case(1)
+                            <form action="{{route('instructor.courses.status',$course)}}" method="POST">
+                                @csrf
+                                <button class="btn btn-danger" type="submit">Solicitar Revisión</button>
+                            </form>
+                                @break
+                            @case(2)
+                            <span class="leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                Curso en revision
+                            </span>
+                                @break
+                            @case(3)
+                            <span class="leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                Curso publicado
+                            </span>
+                                @break
+                            @default
+                            
+                    @endswitch
+                    
         
                 </aside>
         
