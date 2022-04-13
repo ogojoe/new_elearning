@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Course;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ApprovedCourse;
+use App\Mail\RejectCourse;
 
 class CourseController extends Controller
 {
@@ -31,6 +34,33 @@ class CourseController extends Controller
         $course->status = 3;
         $course->save();
 
+        //Enviando correo
+        $mail = new ApprovedCourse($course);
+        Mail::to($course->teacher->email)->queue($mail);
+
+
         return redirect()->route('admin.courses.index')->with('info','El curso se publico con éxito');
+    }
+
+    public function observation(Course $course)
+    {
+        return view('admin.courses.observation',compact('course'));
+    }
+
+    public function reject(Request $request, Course $course){
+        $request->validate([
+            'body'=>'required'
+        ]);
+
+        $course->observation()->create($request->all());
+        $course->status = 1;
+        $course->save();
+
+        //Enviando correo
+        $mail = new RejectCourse($course);
+        Mail::to($course->teacher->email)->queue($mail);
+
+        return redirect()->route('admin.courses.index')->with('info','Se ha realizado el informe con éxito');
+
     }
 }

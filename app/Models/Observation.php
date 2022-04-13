@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Goal extends Model
+class Observation extends Model
 {
     use HasFactory;
 
-    protected $guarded = ["id"];
+    protected $fillable = ['body','course_id'];
 
     public function course()
     {

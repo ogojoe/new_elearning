@@ -271,15 +271,26 @@ return [
         ],
         ['header' => 'Opciones de curso'],
         [
+            'text' => 'Categorias',
+            'route'  => 'admin.categories.index',
+            'icon' => 'fas fa-fw fa-cogs',
+        ],
+        [
+            'text' => 'Niveles',
+            'route'  => 'admin.levels.index',
+            'icon' => 'fas fa-fw fa-chart-line',
+        ],
+        [
+            'text' => 'Precios',
+            'route'  => 'admin.prices.index',
+            'icon' => 'fab fa-fw fa-cc-visa',
+        ],
+        [
             'text' => 'Pendientes de aprobación',
             'route'  => 'admin.courses.index',
             'icon' => 'fas fa-fw fa-user',
         ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+        
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
@@ -318,22 +329,7 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+        
     ],
 
     /*
