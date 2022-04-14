@@ -56,7 +56,7 @@
             </section>
 
             <section class="mb-8">
-                <h1 class="font-bold text-3xl">Requisitios</h1>
+                <h1 class="font-bold text-3xl text-gray-800">Requisitios</h1>
                 <ul class="list-disc list-inside">
                     @foreach ($course->requirements as $requirement)
                         <li class="text-gray-700 text-base">{{$requirement->name}}</li>
@@ -65,7 +65,7 @@
             </section>
 
             <section class="mb-4">
-                <h1 class="font-bold text-3xl">Descripción</h1>
+                <h1 class="font-bold text-3xl text-gray-800">Descripción</h1>
                 <div>
                     {!!$course->description!!}
                 </div>
@@ -92,10 +92,18 @@
                         <a href="{{Route('courses.status',$course)}}" class="btn btn-danger btn-block mt-4">Continuar al curso</a>
                             
                         @else
-                        <form action="{{Route('courses.enrolled', $course)}}" method="POST" >
-                            @csrf
-                            <button type="submit" class="btn btn-danger btn-block mt-4">Llevar este curso</button>
-                        </form>
+
+                            @if ($course->price->value == 0)
+                            <p class="text-2xl font-bold text-gray-500">Curso gratuito</p>
+                            <form action="{{Route('courses.enrolled', $course)}}" method="POST" >
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-block mt-4">Llevar este curso</button>
+                            </form> 
+                            @else
+                                <p class="text-2xl font-bold text-gray-500 mt-3 mb2">$ {{$course->price->value}}</p>
+                                <a href="{{route('payment.checkout', $course)}}" class="btn btn-danger btn-block mt-4">Comprar este curso</a>
+                            @endif
+                        
                     @endcan
                     
                     

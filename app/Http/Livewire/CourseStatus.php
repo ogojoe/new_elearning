@@ -90,4 +90,8 @@ class CourseStatus extends Component
 
         return round($advance,0);
     }
+
+    public function download(){
+        return response()->download(storage_path('app/'. $this->current->resource->url));
+    }
 }
