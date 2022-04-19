@@ -28,7 +28,7 @@ class CategoryController extends Controller
 
         $category = Category::create($request->all());
 
-        return redirect()->route('admin.categories.edit',$category)->with('info','La categoría se creó con éxito.');
+        return redirect()->route('admin.categories.edit',$category)->with('info','El idioma se creó con éxito.');
     }
 
     public function show(Category $category)
@@ -49,7 +49,7 @@ class CategoryController extends Controller
 
         $category->update($request->all());
 
-        return redirect()->route('admin.categories.edit',$category)->with('info','La categoría se actualizó con éxito.');
+        return redirect()->route('admin.categories.edit',$category)->with('info','El idioma se actualizó con éxito.');
 
     }
 
@@ -57,6 +57,6 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('admin.categories.index')->with('info','La categoría se eliminó con éxito.');
+        return redirect()->route('admin.categories.index')->with('info','El idioma se eliminó con éxito.');
     }
 }

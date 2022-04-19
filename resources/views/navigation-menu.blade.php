@@ -7,7 +7,7 @@
         ],
         [
             'name'=>'Cursos',
-            'route'=> route('courses.index'),
+            'route'=> Auth::user()  && Auth::user()->hasRole('Instructor') ? route('instructor.courses.index') : route('courses.index'),
             'active'=> request()->routeIs('courses.*'),
         ]
 

@@ -12,7 +12,7 @@
                 
                 <button class="px-4 text-gray-700 block h-12 overflow-hidden focus:outline-none bg-white shadow" x-on:click="open = !open">
                     <i class="fas fa-tags text-sm mr-2"></i>
-                    Categoría
+                    Idioma
                     <i class="fas fa-angle-down text-sm ml-2"></i>
                 </button>
                 <!-- Dropdown Body -->

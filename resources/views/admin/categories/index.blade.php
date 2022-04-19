@@ -3,7 +3,7 @@
 @section('title', 'Categorias')
 
 @section('content_header')
-    <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.categories.create')}}">Nueva categoria</a>
+    <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.categories.create')}}">Nuevo idioma</a>
     <h1>Lista de Categorias</h1>
 @stop
 

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Crear Categoria')
+@section('title', 'Crear Idioma')
 
 @section('content_header')
-    <h1>Crear Categoria</h1>
+    <h1>Crear Idioma</h1>
 @stop
 
 @section('content')
@@ -12,13 +12,13 @@
             {!! Form::open(['route' => 'admin.categories.store']) !!}
                 <div>
                     {!! Form::label('name', 'Nombre') !!}
-                    {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Ingresa la nueva categoría']) !!}
+                    {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Ingresa el nombre del idioma']) !!}
                 
                     @error('name')
                         <span class="text-red text-sm">{{$message}}</span>
                     @enderror
                 </div>
-                {!! Form::submit('Crear categoría', ['class'=>'btn btn-primary mt-2']) !!}
+                {!! Form::submit('Crear idioma', ['class'=>'btn btn-primary mt-2']) !!}
             {!! Form::close() !!}
         </div>
     </div>

@@ -37,5 +37,13 @@ class PermissionSeeder extends Seeder
 
         Permission::create(['name' => 'Editar Usuarios']);
 
+        Permission::create(['name' => 'Ver Grupos']);
+
+        Permission::create(['name' => 'Asignar Calificaciones']);
+
+        Permission::create(['name' => 'Tomar Cursos']);
+
+        Permission::create(['name' => 'Ver Calificaciones']);
+
     }
 }

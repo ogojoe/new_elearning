@@ -6,7 +6,7 @@
         <h1 class="card-title">{{ Str::limit($course->title,25)}}</h1>
         <p class="text-gray-500 text-sm mb-2 mt-auto">Prof:{{$course->teacher->name}}</p>
         
-        <div class="flex">
+        <div class="flex mb-2">
             <ul class="flex text-sm">
                 <li class="mr-1"><i class="fas fa-star {{$course->rating >= 1 ? 'text-yellow-400' : 'text-gray-400'}}"></i></li>
                 <li class="mr-1"><i class="fas fa-star {{$course->rating >= 2 ? 'text-yellow-400' : 'text-gray-400'}}"></i></li>
@@ -20,10 +20,8 @@
                 ({{$course->students_count}})
             </p>
         </div>
-
-        <p class="my-2 text-gray-500 font-bold">{{$course->price->value == 0? 'Gratis': '$'.$course->price->value}}</p>
         
-        <a href="{{Route('courses.show',$course)}}" class=" btn btn-primary btn-block py-2 px-4 ">
+        <a href="{{Route('courses.show',$course)}}" class=" btn btn-primary btn-block py-4 px-4 ">
             Más información
         </a>
     </div>

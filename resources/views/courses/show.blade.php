@@ -8,7 +8,7 @@
                 <h1 class="text 4xl">{{$course->title}}</h1>
                 <h2 class="text-xl mb-3">{{$course->subtitle}}</h2>
                 <p mb-2><i class="fas fa-chart-line"></i> Nivel: {{$course->level->name}}</p>
-                <p mb-2><i class="fas fa-chart-line"></i> Categoría: {{$course->category->name}}</p>
+                <p mb-2><i class="fas fa-chart-line"></i> Idioma: {{$course->category->name}}</p>
                 <p mb-2><i class="fas fa-users"></i> Matriculádos: {{$course->students_count}}</p>
                 <p><i class="far fa-star"></i> Calificación: {{$course->rating}}</p>
             </div>
@@ -90,20 +90,6 @@
 
                     @can('enrolled', $course)
                         <a href="{{Route('courses.status',$course)}}" class="btn btn-danger btn-block mt-4">Continuar al curso</a>
-                            
-                        @else
-
-                            @if ($course->price->value == 0)
-                            <p class="text-2xl font-bold text-gray-500">Curso gratuito</p>
-                            <form action="{{Route('courses.enrolled', $course)}}" method="POST" >
-                                @csrf
-                                <button type="submit" class="btn btn-danger btn-block mt-4">Llevar este curso</button>
-                            </form> 
-                            @else
-                                <p class="text-2xl font-bold text-gray-500 mt-3 mb2">$ {{$course->price->value}}</p>
-                                <a href="{{route('payment.checkout', $course)}}" class="btn btn-danger btn-block mt-4">Comprar este curso</a>
-                            @endif
-                        
                     @endcan
                     
                     

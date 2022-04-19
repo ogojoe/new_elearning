@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar categoria')
+@section('title', 'Editar idioma')
 
 @section('content_header')
-    <h1>Editar categoria</h1>
+    <h1>Editar idioma</h1>
 @stop
 
 @section('content')
@@ -18,13 +18,13 @@
         {!! Form::model($category, ['route' => ['admin.categories.update', $category ], 'method'=> 'PUT']) !!}
             <div>
                 {!! Form::label('name', 'Nombre') !!}
-                {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Ingresa la nueva categoría']) !!}
+                {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Ingresa el nombre del idioma']) !!}
             
                 @error('name')
                     <span class="text-red text-sm">{{$message}}</span>
                 @enderror
             </div>
-            {!! Form::submit('Actualizar categoría', ['class'=>'btn btn-primary mt-2']) !!}
+            {!! Form::submit('Actualizar idioma', ['class'=>'btn btn-primary mt-2']) !!}
         {!! Form::close() !!}
     </div>
 </div>
