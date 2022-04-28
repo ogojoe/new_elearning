@@ -1,16 +1,31 @@
-@php
+@php 
+
+        if (Auth::user() && Auth::user()->hasRole('Instructor')) {
+            $menu1= [
+            'name'=>'Mis Cursos',
+            'route'=> route('instructor.courses.index'),
+            'active'=> request()->routeIs('courses.*'),
+        ];
+        } else if (Auth::user() && Auth::user()->hasRole('Alumno')){
+            $menu1=[
+            'name'=>'Mis Cursos',
+            'route'=> route('student.courses.index'),
+            'active'=> request()->routeIs('courses.*'),
+        ];
+        }else{
+            $menu1=[
+            'name'=>'Cursos',
+            'route'=> route('courses.index'),
+            'active'=> request()->routeIs('courses.*'),
+        ];
+        }    
     $nav_links = [
         [
             'name'=>'Home',
             'route'=> route('home'),
             'active'=> request()->routeIs('home'),
         ],
-        [
-            'name'=>'Cursos',
-            'route'=> Auth::user()  && Auth::user()->hasRole('Instructor') ? route('instructor.courses.index') : route('courses.index'),
-            'active'=> request()->routeIs('courses.*'),
-        ]
-
+        $menu1
     ];
 @endphp
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
@@ -133,7 +148,12 @@
                                     Administrador
                                 </x-jet-dropdown-link>
                             @endcan
-                            
+
+                            @role('Docente')
+                            <x-jet-dropdown-link href="{{ route('teacher.home') }}">
+                                Docente
+                            </x-jet-dropdown-link>
+                            @endrole
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">

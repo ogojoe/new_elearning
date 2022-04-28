@@ -53,11 +53,11 @@
                 <h1 class="text-2xl leading-8 text-center mb-4">{{$course->title}}</h1>
                 <div class="flex item-center">
                     <figure>
-                        <img class="w-12 h-12 object-cover rounded-full mr-4" src="{{$course->teacher->profile_photo_url}}" alt="">
+                        <img class="w-12 h-12 object-cover rounded-full mr-4" src="{{$course->instructor->profile_photo_url}}" alt="">
                     </figure>
                     <div class="ml-4">
-                        <p>Profr. {{$course->teacher->name}}</p>
-                        <a class="text-blue-500 text-sm" href="">{{'@'.Str::slug($course->teacher->name, '')}}</a>
+                        <p>Profr. {{$course->instructor->name}}</p>
+                        <a class="text-blue-500 text-sm" href="">{{'@'.Str::slug($course->instructor->name, '')}}</a>
                     </div>
                 </div>
 

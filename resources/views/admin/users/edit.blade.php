@@ -7,22 +7,27 @@
 @stop
 
 @section('content')
+@if (session('info'))
+    <div class="alert alert-success ">
+        {{session('info')}}
+    </div>
+@endif
     <div class="card">
         <div class="card-body">
             <h1 class="h5">Nombre</h1>
             <p class="form-control">{{$user->name}}</p>
 
-            <h1 class="h5">Lista de Roles</h1>
+            <h1 class="h5">Indica el rol del usuario</h1>
             {!! Form::model($user, ['route' => ['admin.users.update', $user], 'method' => 'put']) !!}
                 @foreach ($roles as $role)
                 <div>
                     <label>
-                        {!! Form::checkbox('roles[]', $role->id, null, ['class'=>'mr-1']) !!}
+                        {!! Form::checkbox('roles[]', $role->id, null, ['class'=>'mr-1','onchange'=>'showEscuelas(this.value)']) !!}
                         {{$role->name}}
                     </label>
                 </div>
                 @endforeach
-
+                
                 {!! Form::submit('Asignar rol', ['class'=> 'btn btn-primary mt-2']) !!}
 
             {!! Form::close() !!}
@@ -30,10 +35,18 @@
     </div>
 @stop
 
+@section('plugins.Select2', true)
+
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script src="{{ asset('js/myscripts.js')}}"></script>
+    <script>
+        function showEscuelas(value){
+            resetSelect("roles[]",value);
+        }
+
+    </script>
 @stop

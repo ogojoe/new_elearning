@@ -12,4 +12,5 @@ class HomeController extends Controller
         $courses = Course::where('status',3)->latest('id')->get()->take(12);
         return view('welcome',compact('courses'));
     }
+
 }

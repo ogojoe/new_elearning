@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
 use App\Http\Livewire\CourseStatus;
-use App\Models\Course;
 
 /*
 |--------------------------------------------------------------------------

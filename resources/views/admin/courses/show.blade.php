@@ -105,12 +105,12 @@
             <section class="card mb-4">
                 <div class="card-body">
                     <div class="flex items-center">
-                        <img class="h-12 v-12 object-cover rounded-full shadow-lg" src="{{$course->teacher->profile_photo_url}}" alt="{{$course->teacher->name}}">
+                        <img class="h-12 v-12 object-cover rounded-full shadow-lg" src="{{$course->instructor->profile_photo_url}}" alt="{{$course->instructor->name}}">
                         <div class="ml-4">
                             <h1 class="font-bold text-gray-500 text-lg">
-                                Prof:{{$course->teacher->name}} 
+                                Prof:{{$course->instructor->name}} 
                             </h1>
-                            <a class="text-blue-400 text-sm font-bold" href="">{{'@'.Str::slug($course->teacher->name,"")}}</a>
+                            <a class="text-blue-400 text-sm font-bold" href="">{{'@'.Str::slug($course->instructor->name,"")}}</a>
                         </div>
                     </div>
 

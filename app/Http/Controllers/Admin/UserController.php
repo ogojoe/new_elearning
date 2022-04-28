@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\School;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -24,15 +25,15 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::all();
-        return view('admin.users.edit',compact('user','roles'));
+        $schools = School::all();
+        return view('admin.users.edit',compact('user','roles','schools'));
     }
 
     
     public function update(Request $request, User $user)
     {
         $user->roles()->sync($request->roles);
-
-        return redirect()->route('admin.users.edit',$user);
+        return redirect()->route('admin.users.edit',$user)->with('info','Roles asignados con éxito.');
     }
 
    

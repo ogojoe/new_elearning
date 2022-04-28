@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Inicio')
+@section('title', 'Usuarios')
 
 @section('content_header')
-    <h1>Inicio</h1>
+    <h1>Usuarios pendientes de asignar Rol</h1>
 @stop
 
 @section('content')
-    <p>Bienvenido</p>
+    @livewire('admin.users-index', ['solicitudes' => true])
 @stop
 
 @section('css')

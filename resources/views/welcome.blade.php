@@ -3,16 +3,17 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
             <div class="w-full md:w-3/4 lg:w-1/2">
                 <h1 class="text-white font-bold text-4xl">Welcome to school</h1>
-                <p class="text-white text-lg mt-2 mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, asperiores maxime reprehenderit reiciendis deserunt sed, 
-                    earum ipsum laboriosam, illo perspiciatis doloremque nesciunt animi alias ad itaque eveniet quod magnam consequatur.</p>
-
-                @livewire('search')
+                <p class="text-white text-lg mt-2 mb-4">Learning another language is like becoming another person</p>
+                @guest
+                    @livewire('search') 
+                @endguest
+                
             </div>
         </div>
     </section>
 
-    <section class="mt-24">
-        <h1 class="text-gray-600 text-center text-3xl bt-6">Contenido</h1>
+    <section class="mt-8">
+        <h1 class="text-gray-600 text-center text-3xl bt-6 mb-4">Contenido</h1>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
             <article>
                 <figure>
@@ -63,15 +64,16 @@
         </div>
     </section>
 
-    <section class="mt-24 bg-gray-700 py-12">
-        <h1 class="text-center text-white text-3xl">Inscríbete ya!</h1>
-        <p class="text-center text-white">Registrate para iniciar tu camino al éxito.</p>
-        <div class="flex justify-center mt-4">
-            <a href="{{ route('courses.index') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                Ir a inscripciones
-            </a>
-        </div>
-    </section>
+    @guest
+        <section class="mt-24 bg-gray-700 py-12">
+            <h1 class="text-center text-white text-3xl">Inscríbete ya!</h1>
+            <p class="text-center text-white">Registrate para iniciar tu camino al éxito.</p>
+            <div class="flex justify-center mt-4">
+                <a href="{{ route('courses.index') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                    Ir a inscripciones
+                </a>
+            </div>
+        </section> 
 
     <section class="my-24">
         <h1 class="text-center text-3xl text-gray-600">Últimos cursos</h1>
@@ -84,6 +86,7 @@
         </div>
     
     </section>
+    @endguest
 
 </x-app-layout>
 

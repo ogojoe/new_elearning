@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'E-Learning',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -187,8 +187,9 @@ return [
     |
     */
 
+
     'use_route_url' => false,
-    'dashboard_url' => '/admin',
+    'dashboard_url' => false,
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -229,12 +230,6 @@ return [
             'type'         => 'darkmode-widget',
             'topnav_right' => true, // Or "topnav => true" to place on the left.
         ],
-        // Navbar items:
-        /* [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ], */
         [
             'type'         => 'navbar-notification',
             'id'           => 'my-notification',      // An ID attribute (required).
@@ -242,32 +237,21 @@ return [
             'icon_color'   => 'warning',              // The initial icon color (optional).
             'label'        => 0,                      // The initial label for the badge (optional).
             'label_color'  => 'danger',               // The initial badge color (optional).
-            'url'          => 'admin/notifications/show',   // The url to access all notifications/elements (required).
+            'url'          => 'admin/solicitudes/show',   // The url to access all notifications/elements (required).
             'topnav_right' => true,                   // Or "topnav => true" to place on the left (required).
             'dropdown_mode'   => true,                // Enables the dropdown mode (optional).
-            'dropdown_flabel' => 'All notifications', // The label for the dropdown footer link (optional).
+            'dropdown_flabel' => 'Revisar solicitudes', // The label for the dropdown footer link (optional).
             'update_cfg'   => [
-                'url' => 'admin/notifications/get',         // The url to periodically fetch new data (optional).
+                'url' => 'admin/solicitudes/get',         // The url to periodically fetch new data (optional).
                 'period' => 30,                       // The update period for get new data (in seconds, optional).
             ],
+            'can'=>'Listar Role',
         ],
 
         // Sidebar items:
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'Dashboard',
-            'route'         => 'admin.home',
-            'icon'        => 'fas fa-fw fa-tachometer-alt',
-            'can' => 'Ver Dashboard'
-            
+            'header' => 'Configuración de usuarios',
+            'can' => 'Listar Role',
         ],
         [
             'text'        => 'Lista de Roles',
@@ -288,17 +272,24 @@ return [
         [
             'text' => 'Escuelas',
             'route'  => 'admin.schools.index',
+            'can' => 'Listar Escuelas',
             'icon' => 'fas fa-fw fa-school',
+            'active' => ['admin/schools*']
         ],
-        ['header' => 'Opciones de curso'],
+        [
+            'header' => 'Opciones de curso',
+            'can' => 'Listar Role',
+        ],
         [
             'text' => 'Idiomas',
             'route'  => 'admin.categories.index',
+            'can' => 'Actualizar cursos',
             'icon' => 'fas fa-fw fa-cogs',
         ],
         [
             'text' => 'Niveles',
             'route'  => 'admin.levels.index',
+            'can' => 'Actualizar cursos',
             'icon' => 'fas fa-fw fa-chart-line',
         ],
         /* [
@@ -309,47 +300,11 @@ return [
         [
             'text' => 'Pendientes de aprobación',
             'route'  => 'admin.courses.index',
+            'can' => 'Actualizar cursos',
             'icon' => 'fas fa-fw fa-user',
         ],
         
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
+       
         
     ],
 
@@ -413,13 +368,18 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/select2/js/select2.full.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
+                    'asset' => true,
+                    'location' => 'vendor/select2/css/select2.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/select2-bootstrap4-theme/select2-bootstrap4.min.css',
                 ],
             ],
         ],

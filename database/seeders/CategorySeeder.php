@@ -16,15 +16,15 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::create([
-            "name"=>"Desarrollo web"
+            "name"=>"Ingles"
         ]);
 
         Category::create([
-            "name"=>"Diseño web"
+            "name"=>"Frances"
         ]);
 
         Category::create([
-            "name"=>"Programación"
+            "name"=>"Aleman"
         ]);
     }
 }

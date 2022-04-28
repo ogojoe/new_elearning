@@ -74,7 +74,7 @@ class Course extends Model
     }
 
     //Relacion uno a muchos inversa
-    public function teacher(){
+    public function instructor(){
         return $this->belongsTo("App\Models\User","user_id");
     }
 

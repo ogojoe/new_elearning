@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\SchoolController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LevelController;
+use App\Http\Controllers\Admin\NotificationsContoller;
 use App\Http\Controllers\Admin\PriceController;
 
 /*
@@ -40,4 +41,7 @@ Route::post('courses/{course}/approved', [CourseController::class, 'approved'])-
 Route::get('courses/{course}/observation', [CourseController::class, 'observation'])->name('courses.observation');
 
 Route::post('courses/{course}/reject', [CourseController::class, 'reject'])->name('courses.reject');
+
+Route::get('solicitudes/get', [NotificationsContoller::class,'getNotificationsData'])->name('solicitudes.get');
+Route::get('solicitudes/show', [NotificationsContoller::class,'showSolicitudes'])->name('solicitudes.show');
 

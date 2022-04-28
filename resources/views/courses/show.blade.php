@@ -79,12 +79,12 @@
             <section class="card mb-4">
                 <div class="card-body">
                     <div class="flex items-center">
-                        <img class="h-12 v-12 object-cover rounded-full shadow-lg" src="{{$course->teacher->profile_photo_url}}" alt="{{$course->teacher->name}}">
+                        <img class="h-12 v-12 object-cover rounded-full shadow-lg" src="{{$course->instructor->profile_photo_url}}" alt="{{$course->instructor->name}}">
                         <div class="ml-4">
                             <h1 class="font-bold text-gray-500 text-lg">
-                                Prof:{{$course->teacher->name}} 
+                                Prof:{{$course->instructor->name}} 
                             </h1>
-                            <a class="text-blue-400 text-sm font-bold" href="">{{'@'.Str::slug($course->teacher->name,"")}}</a>
+                            <a class="text-blue-400 text-sm font-bold" href="">{{'@'.Str::slug($course->instructor->name,"")}}</a>
                         </div>
                     </div>
 
@@ -105,8 +105,8 @@
                                 <a class="font-bold text-gray-500 mb-3" href="{{Route('courses.show',$similar)}}">{{Str::limit($similar->title,30)}}</a>
                             </h1>
                             <div class="flex items-center mb-2">
-                                <img class="h-8 w-8 object-cover rounded-full shadow-lg" src="{{$similar->teacher->profile_photo_url}}" alt="">
-                                <p class="text-gray-700 text-sm ml-2">{{$similar->teacher->name}}</p>
+                                <img class="h-8 w-8 object-cover rounded-full shadow-lg" src="{{$similar->instructor->profile_photo_url}}" alt="">
+                                <p class="text-gray-700 text-sm ml-2">{{$similar->instructor->name}}</p>
                             </div>
 
                             <p class="text-sm"><i class="fas fa-star mr-2 text-yellow-400"></i> {{$similar->rating}}</p>

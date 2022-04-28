@@ -95,5 +95,10 @@ class User extends Authenticatable
         return $this->belongsToMany("App\Models\Lesson");
     }
 
+    public function adminlte_img()
+    {
+        return "mi imagen";
+    }
+
 
 }

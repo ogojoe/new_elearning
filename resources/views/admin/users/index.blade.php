@@ -7,13 +7,13 @@
 @stop
 
 @section('content')
-    @livewire('admin.users-index')
+    @livewire('admin.users-index', ['solicitudes' => false])
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    
 @stop
