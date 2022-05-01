@@ -35,11 +35,12 @@
                             <td>{{$role->id}}</td>
                             <td>{{$role->name}}</td>
                             <td width='10px'><a class="btn btn-secondary" href="{{route('admin.roles.edit',$role)}}">Editar</a></td>
-                            <td width='10px'><form action="{{route('admin.roles.destroy',$role)}}" method="POST">
+                            <td width='10px'>
+                                {{-- <form action="{{route('admin.roles.destroy',$role)}}" method="POST">
                                     @method('delete')
                                     @csrf
                                     <button class="btn btn-danger" type="submit">Eliminar</button>
-                                </form>
+                                </form> --}}
                             </td>
                         </tr>
                     @empty

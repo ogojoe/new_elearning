@@ -270,9 +270,13 @@ return [
             
         ],
         [
+            'header' => 'Opciones de escuela',
+            'can' => 'Leer Usuarios',
+        ],
+        [
             'text' => 'Escuelas',
             'route'  => 'admin.schools.index',
-            'can' => 'Listar Escuelas',
+            'can' => 'Leer Usuarios',
             'icon' => 'fas fa-fw fa-school',
             'active' => ['admin/schools*']
         ],
