@@ -32,16 +32,16 @@
 
 <div class="grid grid-cols-3 gap-4">
     <div>
-        {!! Form::label('category_id', 'Categoría: ') !!}
+        {!! Form::label('category_id', 'Idioma: ') !!}
         {!! Form::select('category_id', $categories, null, ['class'=>'form-input block w-full mt-1']) !!}
     </div>
     <div>
-        {!! Form::label('level_id', 'Niveles: ') !!}
+        {!! Form::label('level_id', 'Nivel: ') !!}
         {!! Form::select('level_id', $levels, null, ['class'=>'form-input block w-full mt-1']) !!} 
     </div>
     <div>
-        {!! Form::label('price_id', 'Precio: ') !!}
-        {!! Form::select('price_id', $prices, null, ['class'=>'form-input block w-full mt-1']) !!}
+        {{-- {!! Form::label('price_id', 'Precio: ') !!}
+        {!! Form::select('price_id', $prices, null, ['class'=>'form-input block w-full mt-1']) !!} --}}
     </div>
 </div>
 
@@ -59,9 +59,7 @@
     </figure>
     <div>
         <p class="mb-2">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et ullam doloribus eius 
-            atque. Cum quaerat est natus tempore rerum delectus laudantium nulla eligendi non 
-            quidem, possimus, in sapiente, impedit cumque.
+            Ingresa una imagen referente al curso.
         </p>
         {!! Form::file('file', ['class'=>'form-input w-full'.($errors->has('file')?' border-red-600':''),'id'=>'file','accept'=>'image/*']) !!}
         @error('file')

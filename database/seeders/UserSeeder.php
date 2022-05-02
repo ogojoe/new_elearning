@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
 
         $user->assignRole('Admin');
 
-        $user = User::create([
+        /* $user = User::create([
             "name"=>"Pedro",
             "email"=>"pedro@gmail.com",
             "password"=>bcrypt("12345678")
@@ -47,6 +47,6 @@ class UserSeeder extends Seeder
 
         $user->assignRole('Alumno');
 
-        User::factory(30)->create();
+        User::factory(30)->create(); */
     }
 }

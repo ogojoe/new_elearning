@@ -24,7 +24,7 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::create([
-            "name"=>"Aleman"
+            "name"=>"Italiano"
         ]);
     }
 }
