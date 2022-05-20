@@ -37,5 +37,6 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('routeIs',function ($expression){
            return "<?php if(Request::url() == route($expression)): ?>";
         });
+
     }
 }

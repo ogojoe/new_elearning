@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('lastname');
+            $table->string('lastname')->nullable();
             $table->string('cellphone')->nullable();
             $table->string('nacionality')->nullable();
             $table->string('degree')->nullable();

@@ -11,7 +11,7 @@ class Requirement extends Model
 
     protected $guarded = ["id"];
 
-    public function coure()
+    public function course()
     {
         return $this->belongsTo("App\Models\Course");
     }

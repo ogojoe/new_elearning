@@ -36,9 +36,9 @@ class SchoolController extends Controller
         return redirect()->route('admin.schools.edit',$school)->with('info','La escuela se creó con éxito.');
     }
 
-    public function show($id)
+    public function show(School $school)
     {
-        
+        return view('admin.schools.show',compact('school'));
     }
 
     public function edit(School $school)

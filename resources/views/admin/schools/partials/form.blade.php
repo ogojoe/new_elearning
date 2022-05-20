@@ -18,7 +18,7 @@
 
 <div class="mb-2">
     {!! Form::label('tipo', 'Tipo:') !!}
-    {!! Form::text('tipo', null, ['class'=>'form-control', 'placeholder'=>'Ingresa el tipo de escuela(Publica/Privada)']) !!}
+    {!! Form::select('tipo',['Pública'=>'Pública','Privada'=>'Privada'], isset($school) ? $school->tipo : null,['class'=>'select2 form-control']) !!}
 
     @error('tipo')
         <span class="text-red text-sm">{{$message}}</span>

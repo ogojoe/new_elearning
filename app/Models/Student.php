@@ -9,11 +9,29 @@ class Student extends Model
 {
     use HasFactory;
 
+    use HasFactory;
     protected $fillable = [
         'name',
         'lastname',
         'cellphone',
         'nacionality',
-        'degree'
+        'degree',
+        'school_id',
+        'user_id'
     ];
+
+    public function user(){
+        return $this->belongsTo("App\Models\User");
+    }
+
+    public function school(){
+        return $this->belongsTo("App\Models\School");
+    }
+
+    //Relacion muchos a muchos 
+    public function group_enrolled(){
+        return $this->hasMany("App\Models\Group");
+    }
+
+
 }

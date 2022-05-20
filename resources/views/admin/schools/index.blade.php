@@ -22,7 +22,7 @@
                         <th>Nombre</th>
                         <th>Pais</th>
                         <th>Estado</th>
-                        <th colspan="2"></th>
+                        <th colspan="3"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,19 +35,19 @@
                                 {{$school->name}}
                             </td>
                             <td>
-                                {{$school->name}}
-                            </td>
-                            <td>
                                 {{$school->country}}
                             </td>
                             <td>
                                 {{$school->state}}
                             </td>
                             <td width="10px">
+                                <a class="btn btn-primary btn-sm" href="{{route('admin.schools.show',$school)}}"><i class="fas fa-eye"></i></a>
+                            </td>
+                            <td width="10px">
                                 <a class="btn btn-primary btn-sm" href="{{route('admin.schools.edit',$school)}}">Editar</a>
                             </td>
                             <td width="10px">
-                                <form action="{{route('admin.schools.destroy',$school)}}" method="POST">
+                                <form action="{{route('admin.schools.destroy',$school)}}" method="POST" class="form-elimina">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
@@ -63,9 +63,29 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+
+<script>
+
+    $('.form-elimina').submit(function(e){
+        e.preventDefault();
+        Swal.fire({
+            title: '¿Estas seguro?',
+            text: "No podras revertir este cambio!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, borrar!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+        })
+    });
+
+    
+</script>
 @stop

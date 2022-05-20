@@ -270,6 +270,20 @@ return [
             
         ],
         [
+            'text' => 'Docentes',
+            'route'  => 'admin.teachers.index',
+            'can' => 'Leer Usuarios',
+            'icon' => 'fas fa-fw fa-chalkboard-teacher',
+            'active' => ['admin/teachers*']
+        ],
+        [
+            'text' => 'Alumnos',
+            'route'  => 'admin.students.index',
+            'can' => 'Leer Usuarios',
+            'icon' => 'fas fa-fw fa-address-card',
+            'active' => ['admin/students*']
+        ],
+        [
             'header' => 'Opciones de escuela',
             'can' => 'Leer Usuarios',
         ],
@@ -368,7 +382,7 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -398,12 +412,12 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'asset' => true,
+                    'location' => 'vendor/sweetalert2/sweetalert2.all.min.js',
                 ],
             ],
         ],

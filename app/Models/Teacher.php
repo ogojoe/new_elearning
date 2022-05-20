@@ -13,6 +13,22 @@ class Teacher extends Model
         'lastname',
         'cellphone',
         'nacionality',
-        'degree'
+        'degree',
+        'school_id',
+        'user_id'
     ];
+
+    public function user(){
+        return $this->belongsTo("App\Models\User");
+    }
+
+    public function school(){
+        return $this->belongsTo("App\Models\School");
+    }
+
+    public function group(){
+        return $this->belongsTo("App\Models\Group");
+    }
+
+  
 }

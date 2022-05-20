@@ -95,6 +95,16 @@ class User extends Authenticatable
         return $this->belongsToMany("App\Models\Lesson");
     }
 
+    public function teacher()
+    {
+        return $this->hasOne("App\Models\Teacher");
+    }
+
+    public function student()
+    {
+        return $this->hasOne("App\Models\Student");
+    }
+
     public function adminlte_img()
     {
         return "mi imagen";

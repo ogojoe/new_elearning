@@ -40,6 +40,7 @@
         {!! Form::select('level_id', $levels, null, ['class'=>'form-input block w-full mt-1']) !!} 
     </div>
     <div>
+        {{ Form::hidden('price_id', '1') }}
         {{-- {!! Form::label('price_id', 'Precio: ') !!}
         {!! Form::select('price_id', $prices, null, ['class'=>'form-input block w-full mt-1']) !!} --}}
     </div>

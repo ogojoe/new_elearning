@@ -4,13 +4,20 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RoleController;
+
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\TeachersController;
+use App\Http\Controllers\Admin\StudentsController;
+
 use App\Http\Controllers\Admin\SchoolController;
+use App\Http\Controllers\Admin\School\GroupController;
+
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LevelController;
 use App\Http\Controllers\Admin\NotificationsContoller;
 use App\Http\Controllers\Admin\PriceController;
+use App\Http\Controllers\Admin\School\StudentsController as SchoolStudentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +32,24 @@ Route::get('', [HomeController::class, 'index'])->middleware('can:Ver Dashboard'
 Route::resource('roles', RoleController::class)->names('roles');
 
 Route::resource('users', UserController::class)->only('index','edit','update')->names('users');
+Route::prefix('teachers')->group(function () {
+    Route::get('', [TeachersController::class, 'index'])->middleware('can:Ver Dashboard')->name('teachers.index');
+});
+
+Route::prefix('students')->group(function () {
+    Route::get('', [StudentsController::class, 'index'])->middleware('can:Ver Dashboard')->name('students.index');
+});
+
 
 Route::resource('schools',SchoolController::class)->names('schools');
+Route::get('school/{school}/groups',[GroupController::class,'list'])->name('school.groups.list');
+Route::group(['prefix' => '{school}'], function () {
+    Route::resource('group', GroupController::class)->names('school.group');
+    Route::group(['prefix' => '{group}'], function () {
+        Route::resource('alumnos', SchoolStudentsController::class)->names('school.group.alumnos');
+    });
+});
+    
 
 Route::resource('categories',CategoryController::class)->names('categories');
 Route::resource('levels',LevelController::class)->names('levels');
@@ -44,4 +67,5 @@ Route::post('courses/{course}/reject', [CourseController::class, 'reject'])->nam
 
 Route::get('solicitudes/get', [NotificationsContoller::class,'getNotificationsData'])->name('solicitudes.get');
 Route::get('solicitudes/show', [NotificationsContoller::class,'showSolicitudes'])->name('solicitudes.show');
+
 

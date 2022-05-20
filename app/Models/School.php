@@ -19,4 +19,19 @@ class School extends Model
         'state',
         'address'
     ];
+    
+    public function groups()
+    {
+        return $this->hasMany(Group::class);
+    }
+
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
+
+    public function teachers()
+    {
+        return $this->hasMany(Teacher::class);
+    }
 }
