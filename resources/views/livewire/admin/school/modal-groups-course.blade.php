@@ -8,7 +8,7 @@
 
             <div class="flex items-center mt-4">
                 <label class="w-32">Cursos:</label>
-                <x-adminlte-select2 name="course" wire:model='course'>
+                <x-adminlte-select2 name="cursito" wire:model.defer='cursito'>
                     @foreach ($courses as $course)
                         <option value="{{ $course->id }}">{{ Str::limit($course->title,25)}}</option>
                     @endforeach

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Group;
 use App\Models\School;
 use App\Models\Category;
+use App\Models\Course;
 use App\Models\Level;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -40,7 +41,16 @@ class GroupController extends Controller
             'level_id'=>'required',
         ]);
 
-        Group::create(array_merge($request->all(), ['school_id' => $school]));
+        $curso = Course::where('category_id',$request->category_id)->where('level_id',$request->level_id)->first();
+
+        if ($curso) {
+            Group::create(array_merge($request->all(), ['school_id' => $school,'course_id' => $curso->id]));
+        } else {
+            Group::create(array_merge($request->all(), ['school_id' => $school]));
+        }
+        
+
+        
 
         return redirect()->route('admin.schools.show',$school)->with('info','El grupo se creó con éxito');
 

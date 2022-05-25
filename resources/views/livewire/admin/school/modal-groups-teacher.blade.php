@@ -8,7 +8,7 @@
 
             <div class="flex items-center mt-4">
                 <label class="w-32">Docente:</label>
-                <x-adminlte-select2 name="docente" wire:model='docente'>
+                <x-adminlte-select2 name="docente" wire:model.defer='docente'>
                     @foreach ($teachers as $teacher)
                         <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
                     @endforeach

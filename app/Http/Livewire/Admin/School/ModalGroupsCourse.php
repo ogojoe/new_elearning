@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class ModalGroupsCourse extends Component
 {
-    public $group, $school, $courses, $course;
+    public $group, $school, $courses, $cursito;
 
     protected $rules = [
         'course' => 'required',
