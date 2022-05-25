@@ -19,7 +19,9 @@ class Group extends Model
         'school_id',
         'category_id',
         'level_id',
-        'teacher_id'
+        'teacher_id',
+        'course_id'
+
     ];
 
     public function school(){
@@ -36,5 +38,13 @@ class Group extends Model
         return $this->hasOne("App\Models\Teacher","id","teacher_id");
     }
 
+    public function course()
+    {
+        return $this->hasOne("App\Models\Course","id","course_id");
+    }
 
+    public function getStudentsIds()
+    {
+        return $this->studentsGroup()->pluck('user_id');
+    }
 }

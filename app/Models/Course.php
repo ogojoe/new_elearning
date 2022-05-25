@@ -96,6 +96,10 @@ class Course extends Model
         return $this->belongsToMany("App\Models\User");
     }
 
+    public function groups(){
+        return $this->belongsToMany("App\Models\Group");
+    }
+
     //Relacion uno a uno polimorfica
     public function image()
     {
@@ -106,5 +110,12 @@ class Course extends Model
     {
         return $this->hasManyThrough("App\Models\Lesson","App\Models\Section");
     }
+
+
+    public function studentsCourse()
+    {
+        return $this->belongsToMany("App\Models\User");
+    }
+
 
 }

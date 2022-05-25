@@ -21,13 +21,13 @@
         </div>
     
         <div class="col-md-4">
-            <a href="#" class="text-dark font-weight-bold">
+            <a href="{{route('admin.school.students.index', $school )}}" class="text-dark font-weight-bold">
                 <x-adminlte-info-box title="Alumnos" text="{{$school->students->count()}}" icon="fas fa-lg fa-address-card" icon-theme="green"/>
             </a>
         </div>
     
         <div class="col-md-4">
-            <a href="#" class="text-dark font-weight-bold">
+            <a href="{{route('admin.school.teachers.index', $school )}}" class="text-dark font-weight-bold">
                 <x-adminlte-info-box title="Docentes" text="{{$school->teachers->count()}}" icon="fas fa-lg fa-chalkboard-teacher" icon-theme="orange"/>
             </a>
         </div>

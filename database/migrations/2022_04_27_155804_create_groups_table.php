@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger("category_id")->nullable();//Idioma
             $table->unsignedBigInteger("level_id")->nullable();
             $table->unsignedBigInteger("teacher_id")->nullable();
-            $table->unsignedBigInteger("teacher_id")->nullable();
+            $table->unsignedBigInteger("course_id")->nullable();
             $table->enum("status",[Group::BORRADOR,Group::ACTIVO,Group::FINALIZADO])->default(Group::BORRADOR);
             
             $table->foreign("school_id")->references("id")->on("schools")->onDelete("cascade");

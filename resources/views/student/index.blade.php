@@ -5,5 +5,5 @@
         </div>
     </section>
 
-    @livewire('courses-index')
+    @livewire('students.courses-index')
 </x-app-layout>

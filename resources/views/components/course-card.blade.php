@@ -21,8 +21,12 @@
             </p>
         </div>
         
-        <a href="{{Route('courses.show',$course)}}" class=" btn btn-primary btn-block py-4 px-4 ">
+        {{-- <a href="{{Route('courses.show',$course)}}" class=" btn btn-primary btn-block py-4 px-4 ">
             Más información
-        </a>
+        </a> --}}
+
+        @can('enrolled', $course)
+            <a href="{{Route('courses.status',$course)}}" class="btn btn-danger btn-block mt-4">Continuar al curso</a>
+        @endcan
     </div>
 </article>

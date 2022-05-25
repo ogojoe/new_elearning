@@ -17,7 +17,10 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LevelController;
 use App\Http\Controllers\Admin\NotificationsContoller;
 use App\Http\Controllers\Admin\PriceController;
-use App\Http\Controllers\Admin\School\StudentsController as SchoolStudentsController;
+use App\Http\Controllers\Admin\School\GroupStudentsController;
+use App\Http\Controllers\Admin\School\SchoolStudentsController;
+use App\Http\Controllers\Admin\School\SchoolTeachersController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,8 +49,10 @@ Route::get('school/{school}/groups',[GroupController::class,'list'])->name('scho
 Route::group(['prefix' => '{school}'], function () {
     Route::resource('group', GroupController::class)->names('school.group');
     Route::group(['prefix' => '{group}'], function () {
-        Route::resource('alumnos', SchoolStudentsController::class)->names('school.group.alumnos');
+        Route::resource('alumnos', GroupStudentsController::class)->names('school.group.alumnos');
     });
+    Route::resource('students', SchoolStudentsController::class)->names('school.students');
+    Route::resource('teachers', SchoolTeachersController::class)->names('school.teachers');
 });
     
 

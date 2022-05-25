@@ -110,5 +110,9 @@ class User extends Authenticatable
         return "mi imagen";
     }
 
+    public function mis_cursos()
+    {
+        return $this->belongsToMany("App\Models\Course",'course_user');
+    }
 
 }
