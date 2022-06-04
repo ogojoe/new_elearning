@@ -35,6 +35,8 @@ class CoursesLesson extends Component
 
         if ($this->platform_id == 2) {
             $rules['url'] = ['required', 'regex:/\/\/(www\.)?vimeo.com\/(\d+)($|\/)/'];
+        }elseif ($this->platform_id == 3) {
+            $rules['url'] = ['required'];
         }
 
         $this->validate($rules);
@@ -62,7 +64,9 @@ class CoursesLesson extends Component
     public function update(){
         if ($this->lesson->platform_id == 2) {
             $this->rules['lesson.url'] = ['required', 'regex:/\/\/(www\.)?vimeo.com\/(\d+)($|\/)/'];
-        }         
+        }   elseif ($this->platform_id == 3) {
+            $rules['url'] = ['required'];
+        }      
         $this->validate();
         $this->lesson->save();
         $this->lesson = new Lesson();

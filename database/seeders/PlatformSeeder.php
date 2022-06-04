@@ -21,5 +21,8 @@ class PlatformSeeder extends Seeder
         Platform::create([
             "name"=>"Vimeo"
         ]);
+        Platform::create([
+            "name"=>"Spotify"
+        ]);
     }
 }
