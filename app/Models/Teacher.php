@@ -30,5 +30,15 @@ class Teacher extends Model
         return $this->belongsTo("App\Models\Group");
     }
 
+    /**
+     * Get all of the groups for the Teacher
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function groups()
+    {
+        return $this->hasMany(Group::class, 'teacher_id', 'id');
+    }
+
   
 }

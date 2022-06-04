@@ -30,7 +30,7 @@ class Student extends Model
 
     //Relacion muchos a muchos 
     public function group_enrolled(){
-        return $this->hasMany("App\Models\Group");
+        return $this->belongsToMany("App\Models\Group");
     }
 
 

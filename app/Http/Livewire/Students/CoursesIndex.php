@@ -23,15 +23,7 @@ class CoursesIndex extends Component
         $categories = Category::all();
         $levels = Level::all();
        
-        /* $courses = Course::myCourses(Auth::user()->id)
-        ->category($this->category_id)
-        ->level($this->level_id)
-        ->paginate(8); */
-        
-        /* $courses = Course::find(Auth::user()->id)->mis_cursos()->get(); */
         $user = User::find(Auth::user()->id);
-
-        /* $courses = User::find(Auth::user()->id); */
 
         return view('livewire.students.courses-index', compact('user', 'categories', 'levels'));
     }

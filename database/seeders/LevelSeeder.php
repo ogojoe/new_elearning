@@ -19,12 +19,12 @@ class LevelSeeder extends Seeder
             "name"=>"Nivel Básico"
         ]);
 
-        Level::create([
+       /*  Level::create([
             "name"=>"Nivel Intermedio"
         ]);
 
         Level::create([
             "name"=>"Nivel Avanzado"
-        ]);
+        ]); */
     }
 }

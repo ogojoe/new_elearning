@@ -8,11 +8,11 @@
 
             <div class="flex items-center mt-4">
                 <label class="w-32">Escuela:</label>
-                <select wire:model.defer='school_id'>
+                <x-adminlte-select2 name="sel2Basic" wire:model.defer='school_id'>
                     @foreach ($schools as $school)
                         <option value="{{ $school->id }}">{{ $school->name }}</option>
                     @endforeach
-                </select>
+                </x-adminlte-select2>
             </div>
         </div>
         <x-slot name="footerSlot">
@@ -20,5 +20,5 @@
             <x-adminlte-button theme="danger" label="Cancelar" data-dismiss="modal" />
         </x-slot>
     </x-adminlte-modal>
-
+    @section('plugins.Select2', true)
 </div>

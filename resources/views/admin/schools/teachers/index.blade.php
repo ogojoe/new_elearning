@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dcoentes')
+@section('title', 'Docentes')
 
 @section('content_header')
     <h1>Docentes en escuela {{$school->name}}</h1>
@@ -28,7 +28,7 @@
                     <tr>
                         <td>{{$teacher->id}}</td>
                         <td>{{$teacher->name}}</td>
-                        <td><a class="btn btn-primary" href="#">Revisar</a></td>
+                        <td><a class="btn btn-primary" href="{{route('admin.school.teachers.show',['school' => $school, 'teacher' => $teacher])}}">Grupos</a></td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -20,7 +20,7 @@
             <a class="btn btn-primary" href="{{ route('admin.school.group.create', $school) }}">Crear grupo</a>
         </div>
 
-        <div class="card-body">
+        <div class="card-body container">
             <div class="row">
                 @forelse ($groups as $item)
                     @livewire('admin.school.groups', ['group' => $item,'school'=>$school], key('groups-'.$item->id))

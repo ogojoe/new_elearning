@@ -15,7 +15,7 @@ class Group extends Model
 
     protected $fillable = [
         'name',
-        'year',
+        'periodo',
         'school_id',
         'category_id',
         'level_id',
@@ -35,8 +35,19 @@ class Group extends Model
 
     public function teacher()
     {
-        return $this->hasOne("App\Models\Teacher","id","teacher_id");
+        return $this->belongsTo("App\Models\Teacher","id","teacher_id");
     }
+
+    /**
+     * Get the maestro that owns the Group
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function maestro()
+    {
+        return $this->belongsTo(Teacher::class, 'teacher_id');
+    }
+
 
     public function course()
     {
@@ -47,4 +58,5 @@ class Group extends Model
     {
         return $this->studentsGroup()->pluck('user_id');
     }
+
 }

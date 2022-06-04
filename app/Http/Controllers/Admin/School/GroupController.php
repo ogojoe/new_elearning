@@ -36,7 +36,7 @@ class GroupController extends Controller
     {
         $request->validate([
             'name'=>'required',
-            'year'=>'required',
+            'periodo'=>'required',
             'category_id'=>'required',
             'level_id'=>'required',
         ]);
@@ -49,21 +49,20 @@ class GroupController extends Controller
             Group::create(array_merge($request->all(), ['school_id' => $school]));
         }
         
-
-        
-
         return redirect()->route('admin.schools.show',$school)->with('info','El grupo se creó con éxito');
 
     }
 
-    public function show($id)
+    public function show(School $school, Group $group)
     {
-        //
+        return view('admin.schools.groups.show',compact('group'));
     }
 
-    public function edit($id)
+    public function edit(School $school,Group $group)
     {
-        //
+        $categories = Category::pluck('name', 'id');
+        $levels =Level::pluck('name', 'id');
+        return view('admin.schools.groups.edit',compact('categories','levels','school','group'));
     }
 
     public function update(Request $request, $id)

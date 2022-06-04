@@ -23,7 +23,10 @@ class GroupStudentsController extends Controller
         $group = Group::find($group);
         $school = School::find($school);
         $students = Student::where('school_id',$school->id)->get();
-        return view('admin.schools.groups.students.asignar',compact('students','school','group'));
+
+        $group_students_id = $group->studentsGroup()->pluck('student_id');
+
+        return view('admin.schools.groups.students.asignar',compact('students','school','group','group_students_id'));
     }
 
     
@@ -33,13 +36,15 @@ class GroupStudentsController extends Controller
             'students'=>'required'
         ]);
         $group = Group::find($group);
-        $group->studentsGroup()->attach($request->students);
+        $group->studentsGroup()->sync($request->students);
         if ($group->course_id) {
+            $users=[];
             $course = Course::find($group->course_id);
             foreach ($request->students as $student) {
-                $user = Student::find($student);               
-                $course->students()->syncWithoutDetaching($user->id);
+                $student = Student::find($student);               
+                array_push($users, $student->user_id);
             }
+            $course->students()->sync($users);
         } 
         return view('admin.schools.groups.students.index',compact('group','school'));
     }

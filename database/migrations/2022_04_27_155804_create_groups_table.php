@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('year');
+            $table->string('periodo');
             $table->unsignedBigInteger("school_id");
             $table->unsignedBigInteger("category_id")->nullable();//Idioma
             $table->unsignedBigInteger("level_id")->nullable();

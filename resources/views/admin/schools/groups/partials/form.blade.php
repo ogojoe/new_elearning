@@ -8,10 +8,10 @@
 </div>
 
 <div class="mb-2">
-    {!! Form::label('year', 'Año:') !!}
-    {!! Form::text('year', null, ['class'=>'form-control', 'placeholder'=>'Ingresa el año del curso (ex:2022)']) !!}
+    {!! Form::label('periodo', 'Periodo:') !!}
+    {!! Form::text('periodo', null, ['class'=>'form-control', 'placeholder'=>'Ingresa el periodo del curso']) !!}
 
-    @error('year')
+    @error('periodo')
         <span class="text-red text-sm">{{$message}}</span>
     @enderror
 </div>

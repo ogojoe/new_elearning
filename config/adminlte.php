@@ -251,17 +251,47 @@ return [
         // Sidebar items:
         [
             'header' => 'Configuración de usuarios',
-            'can' => 'Listar Role',
+            'can'    => 'Listar Role',
         ],
         [
-            'text'        => 'Lista de Roles',
-            'route'         => 'admin.roles.index',
-            'icon'        => 'fas fa-fw fa-user-cog',
-            'can' => 'Listar Role',
-            'active' => ['admin/roles*']
+            'text'    => 'Lista de Roles',
+            'route'   => 'admin.roles.index',
+            'icon'    => 'fas fa-fw fa-user-cog',
+            'can'     => 'Listar Role',
+            'active'  => ['admin/roles*']
             
         ],
+
         [
+            'text'    => 'Usuarios',
+            'icon'    => 'fas fa-fw fa-users',
+            'submenu' => [
+                [
+                    'text'   => 'Lista de usuarios',
+                    'route'  => 'admin.users.index',
+                    'icon'   => 'fas fa-fw fa-users',
+                    'can'    => 'Leer Usuarios',
+                    'active' => ['admin/users*']
+                ],
+                [
+                    'text'   => 'Docentes sin escuela',
+                    'route'  => 'admin.teachers.index',
+                    'can'    => 'Leer Usuarios',
+                    'icon'   => 'fas fa-fw fa-chalkboard-teacher',
+                    'active' => ['admin/teachers*']
+                ],
+                [
+                    'text'   => 'Alumnos sin escuela',
+                    'route'  => 'admin.students.index',
+                    'can'    => 'Leer Usuarios',
+                    'icon'   => 'fas fa-fw fa-address-card',
+                    'active' => ['admin/students*']
+                ],
+            ],
+        ],
+
+
+        /* [
             'text'        => 'Usuarios',
             'route'         => 'admin.users.index',
             'icon'        => 'fas fa-fw fa-users',
@@ -282,7 +312,7 @@ return [
             'can' => 'Leer Usuarios',
             'icon' => 'fas fa-fw fa-address-card',
             'active' => ['admin/students*']
-        ],
+        ], */
         [
             'header' => 'Opciones de escuela',
             'can' => 'Leer Usuarios',

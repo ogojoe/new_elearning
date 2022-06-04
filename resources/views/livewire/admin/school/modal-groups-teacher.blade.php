@@ -8,12 +8,13 @@
 
             <div class="flex items-center mt-4">
                 <label class="w-32">Docente:</label>
-                <x-adminlte-select2 name="docente" wire:model.defer='docente'>
+                <x-adminlte-select2 name="sel2Basic" wire:model.defer='docente'>
                     @foreach ($teachers as $teacher)
                         <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
                     @endforeach
                 </x-adminlte-select2>
             </div>
+            
         </div>
         <x-slot name="footerSlot">
             <x-adminlte-button class="mr-auto" theme="success" label="Aceptar" wire:click='store' />

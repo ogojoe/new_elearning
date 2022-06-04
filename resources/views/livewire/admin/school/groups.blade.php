@@ -1,23 +1,23 @@
-<div>
-    <div class="card card-widget widget-user-2 mr-4">
+<div class="col-md-4">
+    <div class="card card-widget widget-user-2">
         <div class="widget-user-header bg-gradient-lightblue">
             <div class="widget-user-image">
-                <img class="img-circle elevation-2" src="https://picsum.photos/id/1/100" alt="User avatar: Ingles II">
+                <img class="img-circle elevation-2" src="https://picsum.photos/id/1/100" alt="User avatar: {{ $group->name }}">
             </div>
             <a href="{{ route('admin.school.group.edit', ['school' => $school, 'group' => $group]) }}" class="btn btn-default btn-xs float-right" title="Editar" ><i class="fa fa-pencil-alt" ></i></a>
             <h3 class="widget-user-username mb-0">{{ $group->name }}</h3>
             
-            <h6 class="widget-user-desc" role="button" title="Da click para asignar!">
+            <h6 class="widget-user-desc">
                 <div class="color-palette-set">
                     <div class="bg-gray disabled color-palette">
                         <span>Teacher:
                         @if ($group->teacher_id)
-                        {{$group->teacher->name}} 
+                        {{$group->maestro->name}} 
                         @else
-                        <span data-toggle="modal" data-target="#modal-default{{$group->id}}">
+                        <span role="button" title="Da click para asignar!" data-toggle="modal" data-target="#modal-default{{$group->id}}">
                             Pendiente de asignar
                         </span>
-                        @endif 
+                        @endif  
                         </span>
                     </div>
                 </div>
