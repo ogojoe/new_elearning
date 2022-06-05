@@ -15,7 +15,7 @@
                         @enderror
 
                         <div class="flex items-center mt-4">
-                            <label class="w-32">Plataforma:</label>
+                            <label class="w-32">Plataforma: {{$lesson->platform_id}}</label>
                             <select wire:model="lesson.platform_id" class="block appearance-none w-full text-base border border-gray-200 rounded focus:bg-white focus:border-gray-500">
                                 @foreach ($platforms as $platform)
                                     <option value="{{$platform->id}}">{{$platform->name}}</option>
