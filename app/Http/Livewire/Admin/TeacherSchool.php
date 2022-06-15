@@ -8,19 +8,22 @@ use Livewire\Component;
 
 class TeacherSchool extends Component
 {
-    public $user, $school_id = 1 ,$name ,$schools;
+    public $user, $escuela_id ,$name ;
+    public $schools=[];
+
     public Teacher $teacher;
 
     protected $rules = [
         'name'=> 'required',
         'user_id'=>'required',
-        'school_id'=>'required',
+        'escuela_id'=>'required',
     ];
 
     public function mount(User $user)
     {
         $this->user = User::find($user->id);
-        $this->teacher = new Teacher();
+        $teacher = Teacher::where('user_id',$user->id)->get();
+        $teacher ? $this->teacher = $teacher: $this->teacher = new Teacher();
         $this->name = $user->name;
         $this->schools = School::all();
     }
@@ -34,7 +37,7 @@ class TeacherSchool extends Component
         $rules = [
             'name'=> 'required',
             'user.id' => 'required',
-            'school_id'=> 'required'
+            'escuela_id'=> 'required'
         ];
 
         $this->validate($rules);
@@ -42,10 +45,10 @@ class TeacherSchool extends Component
         Teacher::create([
             'name'=>$this->name,
             'user_id'=>$this->user->id,
-            'school_id'=>$this->school_id
+            'school_id'=>$this->escuela_id
         ]);
         
-        $this->reset(['name','school_id']);
+        $this->reset(['name','escuela_id']);
 
         redirect()->route('admin.teachers.index')->with('info','Escuela asignada con éxito.');
         

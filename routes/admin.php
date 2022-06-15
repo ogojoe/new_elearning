@@ -35,8 +35,11 @@ Route::get('', [HomeController::class, 'index'])->middleware('can:Ver Dashboard'
 Route::resource('roles', RoleController::class)->names('roles');
 
 Route::resource('users', UserController::class)->only('index','edit','update')->names('users');
+Route::post('teacher/setSchool', [TeachersController::class, 'setSchool'])->name('teacher.setSchool');
+Route::post('student/setSchool', [StudentsController::class, 'setSchool'])->name('student.setSchool');
 Route::prefix('teachers')->group(function () {
     Route::get('', [TeachersController::class, 'index'])->middleware('can:Ver Dashboard')->name('teachers.index');
+    
 });
 
 Route::prefix('students')->group(function () {

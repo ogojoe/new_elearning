@@ -29,13 +29,10 @@
                                 {{ $item->email }}
                             </td>
                             <td width="30px">
-                                <x-adminlte-button label="Asignar escuela" data-toggle="modal"
-                                    data-target="#modalCustom{{$item->id}}" class="bg-teal" />
+                                <x-adminlte-button data-item="{{$item}}" label="Asignar escuela" data-toggle="modal"
+                                    data-target="#modalCustom" class="bg-teal Carga" />
                             </td>
                         </tr>
-                        <div>
-                            @livewire('admin.teacher-school', ['user' => $item], key($item->id))
-                        </div>
 
                     @endforeach
                 </tbody>
@@ -45,7 +42,54 @@
     </div>
 
     
+    <x-adminlte-modal id="modalCustom" title="Asignar escuela" size="md" theme="teal"
+        icon="fas fa-bell" v-centered scrollable>
+        <div>
+            <form id="frmUpdDocente" method="post">
+            {{ csrf_field() }}
+            <div class="flex items-center">
+            <p class="w-32">Docente: <label class="doc_name"></label> </p>
+            </div>
+            <input type="hidden" class="user_id" name="user_id">
+            <div class="flex items-center mt-4">
+                <label class="w-32">Escuela: </label>
+                <x-adminlte-select2 name="school_id" class="escuela_docente">
+                    <option value="">Selecciona una escuela...</option>
+                    @foreach ($schools as $school)
+                        <option value="{{ $school->id }}">{{ $school->name }}</option>
+                    @endforeach
+                </x-adminlte-select2>
+                
+            </div>
+            </div>
+            <x-slot name="footerSlot">
+                <x-adminlte-button class="mr-auto" theme="success" label="Acceptar" onclick="saveSchool('frmUpdDocente')" />
+                <x-adminlte-button theme="danger" label="Cancelar" data-dismiss="modal" />
+            </x-slot>
+        </form>
+    </x-adminlte-modal>
 
+    @push('js')
+    <script>
+        $(document).on("click", ".Carga", function () {
+            var ruta = '{{ route('admin.teacher.setSchool',':teacher') }}';  
+            var Item = $(this).data('item');
+            ruta = ruta.replace(':teacher', Item.id);
+            $('.doc_name').html(Item.name);
+            $('.user_id').val(Item.id);
+            $('#frmUpdDocente').attr('action', ruta);
+        });
+
+        function saveSchool(form) {
+            $("#" + form).submit();
+            
+        }
+
+
+        
+    </script>
+        
+    @endpush
 
 
 </div>
