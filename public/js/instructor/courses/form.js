@@ -3,6 +3,7 @@ document.getElementById("title").addEventListener('keyup',slugChange);
 function slugChange(){
     title = document.getElementById("title").value;
     document.getElementById("slug").value = slug(title);
+    console.log(title);
 }
 
 function slug(str) {

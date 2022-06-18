@@ -1,16 +1,17 @@
 <x-app-layout>
-    <section class="bg-cover" style="background-image: url({{ asset('img/home/student-g82a0bd6b7_1920.jpg')}})">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-            <div class="w-full md:w-3/4 lg:w-1/2">
-                <h1 class="text-white font-bold text-4xl">Welcome to school</h1>
-                <p class="text-white text-lg mt-2 mb-4">Learning another language is like becoming another person</p>
-                @guest
-                    @livewire('search') 
-                @endguest
-                
+
+    <section class="mt-2">
+        <div class="container-fluid text-center">
+            <div id="padre" class="">
+                <img id="myimg" class="img-fluid card-img" src="/img/logo.jpg">
+                <div class="hijo">
+                    @guest
+                        @livewire('search') 
+                    @endguest
+                </div>
             </div>
         </div>
-    </section>
+    </section> 
 
     <section class="mt-8">
         <h1 class="text-gray-600 text-center text-3xl bt-6 mb-4">Contenido</h1>

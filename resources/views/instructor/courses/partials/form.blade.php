@@ -6,9 +6,9 @@
     @enderror
 </div>
 
-<div class="mb-4">
-    {!! Form::label('slug', 'Slug del curso') !!}
-    {!! Form::text('slug', null, ['readonly'=>'readonly','class' => 'form-input block w-full mt-1'.($errors->has('slug')?' border-red-600':'')]) !!}
+<div class="mb-4 hidden">
+    {!! Form::label('slug', 'Slug del curso',['class' => '']) !!}
+    {!! Form::hidden('slug', null, ['readonly'=>'readonly','class' => ' form-input block w-full mt-1'.($errors->has('slug')?' border-red-600':'')]) !!}
     @error('slug')
         <strong class="test-xs text-red-600">{{$message}}</strong>
     @enderror

@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    {{-- icono --}}
+    <link rel="shortcut icon" href="{{ asset('img/logo.ico')}}">
+
     {{-- Custom Meta Tags --}}
     @yield('meta_tags')
 

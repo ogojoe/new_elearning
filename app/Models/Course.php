@@ -73,6 +73,11 @@ class Course extends Model
         return $this->hasMany("App\Models\Section");
     }
 
+    public function evaluations()
+    {
+        return $this->hasMany("App\Models\Evaluation");
+    }
+
     //Relacion uno a muchos inversa
     public function instructor(){
         return $this->belongsTo("App\Models\User","user_id");

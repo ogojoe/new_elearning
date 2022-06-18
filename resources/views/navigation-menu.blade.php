@@ -1,23 +1,13 @@
 @php 
+        $route= route('courses.index');
+        $name = 'Mis cursos';
 
         if (Auth::user() && Auth::user()->hasRole('Instructor')) {
-            $menu1= [
-            'name'=>'Mis Cursos',
-            'route'=> route('instructor.courses.index'),
-            'active'=> request()->routeIs('courses.*'),
-        ];
+            $route= route('instructor.courses.index');
         } else if (Auth::user() && Auth::user()->hasRole('Alumno')){
-            $menu1=[
-            'name'=>'Mis Cursos',
-            'route'=> route('student.courses.index'),
-            'active'=> request()->routeIs('courses.*'),
-        ];
+            $route= route('student.courses.index');
         }else{
-            $menu1=[
-            'name'=>'Cursos',
-            'route'=> route('courses.index'),
-            'active'=> request()->routeIs('courses.*'),
-        ];
+            $name = 'Cursos';
         }    
     $nav_links = [
         [
@@ -25,7 +15,11 @@
             'route'=> route('home'),
             'active'=> request()->routeIs('home'),
         ],
-        $menu1
+        [
+            'name'=>$name,
+            'route'=> $route,
+            'active'=> request()->routeIs('courses.*'),
+        ]
     ];
 @endphp
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">

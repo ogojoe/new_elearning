@@ -7,6 +7,9 @@
 
         <title>{{ config('app.name', 'E-Learning') }}</title>
 
+        {{-- icono --}}
+        <link rel="shortcut icon" href="img/logo.ico">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -44,8 +47,8 @@
                         <li class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.goals', $course) border-indigo-400 @else border-transparent @endif pl-2">
                             <a href="{{route('instructor.courses.goals', $course)}}">Metas</a>
                         </li>
-                        <li class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.students', $course) border-indigo-400 @else border-transparent @endif pl-2">
-                            <a href="{{route('instructor.courses.students', $course)}}">Estudiantes</a>
+                        <li class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.evaluations', $course) border-indigo-400 @else border-transparent @endif pl-2">
+                            <a href="{{route('instructor.courses.evaluations', $course)}}">Evaluaciones</a>
                         </li>
 
                         @if ($course->observation)

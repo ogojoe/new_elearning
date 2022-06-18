@@ -11,12 +11,12 @@
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">
                         Nombre
                     </th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">
+                    {{-- <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">
                         Matriculados
                     </th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">
                         Calificacion
-                    </th>
+                    </th> --}}
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">
                         Status
                     </th>
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    {{-- <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-gray-900">{{$course->students->count()}}</div>
                         <div class="text-sm text-gray-500">Alumnos Matriculados</div>
                     </td>
@@ -56,7 +56,7 @@
                                 <li class="mr-1"><i class="fas fa-star {{$course->rating >= 5 ? 'text-yellow-400' : 'text-gray-400'}}"></i></li>
                             </ul>
                         </div>
-                    </td>
+                    </td> --}}
                     <td class="px-6 py-4 whitespace-nowrap">
                         @switch($course->status)
                             @case(1)
