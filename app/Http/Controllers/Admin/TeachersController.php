@@ -17,7 +17,7 @@ class TeachersController extends Controller
     public function setSchool(Request $request){
         if ($request->school_id) {
             $user = User::find($request->user_id);
-            $teacher = Teacher::firstOrCreate(['user_id' => $request->user_id ]);
+            $teacher = Teacher::firstOrNew(['user_id' => $request->user_id ]);
             $teacher->school_id = $request->school_id;
             $teacher->name = $user->name;
             if($teacher->update()){

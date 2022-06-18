@@ -18,7 +18,7 @@ class StudentsController extends Controller
     public function setSchool(Request $request){
         if ($request->school_id) {
             $user = User::find($request->user_id);
-            $student = Student::firstOrCreate(['user_id' => $request->user_id ]);
+            $student = Student::firstOrNew(['user_id' => $request->user_id ]);
             $student->school_id = $request->school_id;
             $student->name = $user->name;
             if($student->update()){
