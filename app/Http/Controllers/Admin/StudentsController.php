@@ -21,7 +21,7 @@ class StudentsController extends Controller
             $student = Student::firstOrNew(['user_id' => $request->user_id ]);
             $student->school_id = $request->school_id;
             $student->name = $user->name;
-            if($student->updateOrCreate()){
+            if($student->save()){
                 return redirect()->route('admin.students.index')->with('info','Escuela asignada con éxito.');
             }
         }else{
