@@ -18,8 +18,11 @@ return new class extends Migration
 
             $table->string("name");
 
-            $table->string("url");
-            $table->text("iframe");
+            $table->string("type_resource")->nullable();
+            $table->string("url")->nullable();
+            $table->text("iframe")->nullable();
+
+            $table->unsignedBigInteger("skill_id");
             
             $table->unsignedBigInteger("evaluation_id");
 

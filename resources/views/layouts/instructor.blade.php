@@ -8,7 +8,7 @@
         <title>{{ config('app.name', 'E-Learning') }}</title>
 
         {{-- icono --}}
-        <link rel="shortcut icon" href="img/logo.ico">
+        <link rel="icon" href="{{ asset('/img/logo.ico') }}" type="image/x-icon"/>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -34,8 +34,11 @@
             <div class="container py-8 grid grid-cols-5">
 
                 <aside>
-                    <h1 class="font-bold text-lg mb-4">
+                    <h1 class="font-bold text-lg">
                         Edición del curso
+                    </h1>
+                    <h1 class="font-bold text-xs mb-4">
+                        {{$course->title}}
                     </h1>
                     <ul class="text-sm text-gray-600 mb-4">
                         <li class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.edit', $course) border-indigo-400 @else border-transparent @endif pl-2">

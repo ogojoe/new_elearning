@@ -5,14 +5,17 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 
 use App\Models\Course;
+use App\Models\Evaluation;
+use App\Models\Score;
 use App\Models\Lesson;
+use App\Models\Student;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class CourseStatus extends Component
 {
     use AuthorizesRequests;
 
-    public $course, $current;
+    public $course, $current, $scores=[];
 
     public function mount(Course $course)
     {
@@ -24,10 +27,21 @@ class CourseStatus extends Component
                 break;
             }
         }
-        if ($this->current) {
+
+        if (!$this->current) {
             $this->current = $course->lessons->last();
         }
 
+        /* Se agrego para los examenes del alumno */
+        $student = Student::where('user_id',auth()->user()->id)->first();
+        $evaluations = Evaluation::where('course_id',$course->id)->get();
+        foreach ($evaluations as $evaluation) {
+            $score = Score::where('evaluation_id',$evaluation->id)->where('student_id',$student->id)->first();
+            if($score) {
+                array_push($this->scores,$score);
+            }
+        }
+        
         $this->authorize('enrolled', $course);
     }
 
@@ -93,5 +107,10 @@ class CourseStatus extends Component
 
     public function download(){
         return response()->download(storage_path('app/'. $this->current->resource->url));
+    }
+
+    public function evaluation(Evaluation $evaluation)
+    {
+        return redirect()->route('evaluation.status', $evaluation);
     }
 }

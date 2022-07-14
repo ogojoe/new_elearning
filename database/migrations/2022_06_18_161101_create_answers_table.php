@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
 
             $table->string("name");
-            $table->string("is_correct");
+            $table->tinyInteger("is_correct")->default(0);
             
             $table->unsignedBigInteger("question_id");
 

@@ -2,7 +2,7 @@
         $route= route('courses.index');
         $name = 'Mis cursos';
 
-        if (Auth::user() && Auth::user()->hasRole('Instructor')) {
+        if (Auth::user() && (Auth::user()->hasRole('Instructor') || Auth::user()->hasRole('Admin')) ) {
             $route= route('instructor.courses.index');
         } else if (Auth::user() && Auth::user()->hasRole('Alumno')){
             $route= route('student.courses.index');
@@ -19,8 +19,9 @@
             'name'=>$name,
             'route'=> $route,
             'active'=> request()->routeIs('courses.*'),
-        ]
+        ],
     ];
+
 @endphp
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->

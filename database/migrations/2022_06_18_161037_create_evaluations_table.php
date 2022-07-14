@@ -17,6 +17,15 @@ return new class extends Migration
             $table->id();
 
             $table->string("name");
+            $table->string("instructions");
+
+            $table->string("grammar_type_resource")->nullable();
+            $table->string("grammar_url_resource")->nullable();
+            $table->string("learning_type_resource")->nullable();
+            $table->string("learning_url_resource")->nullable();
+            $table->string("reading_type_resource")->nullable();
+            $table->string("reading_url_resource")->nullable();
+
             $table->unsignedBigInteger("course_id");
 
             $table->foreign("course_id")->references("id")->on("courses")->onDelete("cascade");

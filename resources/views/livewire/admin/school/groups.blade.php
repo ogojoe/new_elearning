@@ -23,14 +23,14 @@
                 </div>
             </h6>
 
-            <h6 class="widget-user-desc" role="button" title="Da click para asignar!">
+            <h6 class="widget-user-desc" >
                 <div class="color-palette-set">
                     <div class="bg-gray disabled color-palette">
                         <span>Curso:
                         @if ($group->course)
                         {{ Str::limit($group->course->title,25)}} 
                         @else
-                        <span data-toggle="modal" data-target="#modal-course{{$group->id}}">
+                        <span role="button" title="Da click para asignar!" data-toggle="modal" data-target="#modal-course{{$group->id}}">
                             Pendiente de asignar
                         </span>
                         @endif 
@@ -78,10 +78,10 @@
     </div>                        
 
     <div>
-        @livewire('admin.school.modal-groups-teacher', ['group' => $group,'school'=>$school], key('modal-teacher'.$group->id))
+        @livewire('admin.school.modal-groups-teacher', ['group' => $group,'school'=>$school], key('modal-teacher' .$group->id))
     </div>
     <div>
-        @livewire('admin.school.modal-groups-course', ['group' => $group,'school'=>$school], key('modal-course'.$group->id))
+        @livewire('admin.school.modal-groups-course', ['group' => $group,'school'=>$school], key('modal-course-' .$group->id))
     </div>
 
 </div>

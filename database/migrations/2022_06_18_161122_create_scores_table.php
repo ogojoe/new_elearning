@@ -16,15 +16,16 @@ return new class extends Migration
         Schema::create('scores', function (Blueprint $table) {
             $table->id();
 
-            $table->string("name");
-            $table->integer("score");
+            $table->double("score",5,2);
             $table->integer("chance");
+            $table->string("dateLastTry");
+            $table->tinyInteger('status')->default(1);//1. Activo, 2. Inactivo, 
             
-            $table->unsignedBigInteger("evaluation_id")->nullable();
-            $table->unsignedBigInteger("user_id");
+            $table->unsignedBigInteger("evaluation_id");
+            $table->unsignedBigInteger("student_id");
 
-            $table->foreign("evaluation_id")->references("id")->on("evaluations")->onDelete("set null");
-            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
+            $table->foreign("evaluation_id")->references("id")->on("evaluations")->onDelete("cascade");
+            $table->foreign("student_id")->references("id")->on("students")->onDelete("cascade");
 
             $table->timestamps();
         });

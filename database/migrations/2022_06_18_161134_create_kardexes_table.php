@@ -16,9 +16,13 @@ return new class extends Migration
         Schema::create('kardexes', function (Blueprint $table) {
             $table->id();
 
-            $table->string("level");
             $table->integer("score");
+            $table->string("language");
+            $table->string("level");
             $table->string("periodo");
+
+            $table->unsignedBigInteger("student_id");
+            $table->foreign("student_id")->references("id")->on("students")->onDelete("cascade");
 
             $table->timestamps();
         });

@@ -48,7 +48,7 @@
                        {{$eval->name}} 
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-right font-medium">
-                        <a href="" class="btn btn-primary">Editar</a>
+                        <a href="{{route('instructor.courses.evaluations.edit', [$course,$eval])}}" class="btn btn-primary">Editar</a>
                         <button class="btn btn-primary" wire:click="destroy({{$eval}})">Eliminar</button>
                     </td>
                 </tr>      

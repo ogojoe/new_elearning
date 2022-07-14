@@ -70,6 +70,42 @@
                   </div>
 
                 <ul class="mt-8">
+                    @if ($scores)
+                    <li class="text-gray-600 text-sm mb-2">
+                        <a class="font-bold text-base inline-block mb-2">Evaluaciones</a>
+                        <ul>
+                        @foreach ($scores as $item)
+                        <li class="mb-1">
+                            <div class="text-sm">
+                                <a href="" class="text-gray-600 ">
+                                    {{$item->evaluation->name}}   
+                                </a>
+                                @switch($item->status)
+                                    @case(1)
+                                    <span wire:click="evaluation({{$item->evaluation}})" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 hover:cursor-pointer hover:bg-green-400">
+                                        Ir a exámen
+                                    </span>
+                                        @break
+                                    @case(2)
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                        {{$item->score}}
+                                    </span>
+                                        @break
+                                    @case(3)
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                            Reportar
+                                        </span>
+                                        @break
+                                    @default
+                                        
+                                @endswitch
+                            </div>
+                        </li>  
+                        @endforeach  
+                        </ul>
+                    </li>
+                    <hr>
+                    @endif
                     @foreach ($course->sections as $section)
                         <li class="text-gray-600 mb-4">
                             <a class="font-bold text-base inline-block mb-2" href="">{{$section->name}}</a>

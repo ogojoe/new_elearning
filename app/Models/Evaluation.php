@@ -15,4 +15,15 @@ class Evaluation extends Model
         return $this->belongsTo("App\Models\Course");
     }
 
+
+    public function questions()
+    {
+        return $this->hasMany("App\Models\Question");
+    }
+
+    public function scores()
+    {
+        return $this->hasMany(Score::class);
+    }
+
 }

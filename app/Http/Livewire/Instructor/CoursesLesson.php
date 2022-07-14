@@ -10,11 +10,13 @@ use Livewire\Component;
 class CoursesLesson extends Component
 {   
     public $section, $lesson,$platforms, $name, $platform_id = 1 , $url;
+
     protected $rules = [
         'lesson.name'=> 'required',
         'lesson.platform_id'=>'required',
         'lesson.url' =>  ['required', 'regex:%^ (?:https?://)? (?:www\.)? (?: youtu\.be/ | youtube\.com (?: /embed/ | /v/ | /watch\?v= ) ) ([\w-]{10,12}) $%x']
     ];
+    
     public function mount(Section $section)
     {
         $this->section = $section;

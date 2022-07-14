@@ -265,6 +265,7 @@ return [
         [
             'text'    => 'Usuarios',
             'icon'    => 'fas fa-fw fa-users',
+            'can'    => 'Leer Usuarios',
             'submenu' => [
                 [
                     'text'   => 'Lista de usuarios',
@@ -289,30 +290,6 @@ return [
                 ],
             ],
         ],
-
-
-        /* [
-            'text'        => 'Usuarios',
-            'route'         => 'admin.users.index',
-            'icon'        => 'fas fa-fw fa-users',
-            'can' => 'Leer Usuarios',
-            'active' => ['admin/users*']
-            
-        ],
-        [
-            'text' => 'Docentes',
-            'route'  => 'admin.teachers.index',
-            'can' => 'Leer Usuarios',
-            'icon' => 'fas fa-fw fa-chalkboard-teacher',
-            'active' => ['admin/teachers*']
-        ],
-        [
-            'text' => 'Alumnos',
-            'route'  => 'admin.students.index',
-            'can' => 'Leer Usuarios',
-            'icon' => 'fas fa-fw fa-address-card',
-            'active' => ['admin/students*']
-        ], */
         [
             'header' => 'Opciones de escuela',
             'can' => 'Leer Usuarios',
