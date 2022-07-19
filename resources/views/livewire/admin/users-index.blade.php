@@ -16,14 +16,16 @@
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
-                            <tr>
-                                <td>{{$user->id}}</td>
-                                <td>{{$user->name}}</td>
-                                <td>{{$user->email}}</td>
-                                <td width="10px">
-                                    <a class="btn btn-primary" href="{{route('admin.users.edit',$user)}}">Editar</a>
-                                </td>
-                            </tr>
+                            @if($user->id != 57)
+                                <tr>
+                                    <td>{{$user->id}}</td>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td width="10px">
+                                        <a class="btn btn-primary" href="{{route('admin.users.edit',$user)}}">Editar</a>
+                                    </td>
+                                </tr>
+                            @endif
                         @endforeach
                     </tbody>
                 </table>
