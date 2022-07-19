@@ -1,7 +1,5 @@
 var h1 = document.getElementById('relojito');
 var start = document.getElementById('iniciar');
-/* var stop = document.getElementById('stp');
-var reset = document.getElementById('rst'); */
 var sec = 0;
 var min = 0;
 var hrs = 0;
@@ -29,8 +27,14 @@ function timer() {
     t = setTimeout(add, 1000);
 }
 
- start.onclick = function() {
+start.onclick = function() {
     timer();
-    start.style.display = 'none';
-    document.getElementById('textito').style.display= 'none';
 }
+
+
+var respuestas = {};
+function respuestas(llave , valor) {
+    Object.assign(respuestas, { llave : valor});
+}
+
+      

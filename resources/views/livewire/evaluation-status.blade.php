@@ -1,27 +1,28 @@
-<div>
+<div x-data="{open: true}">
 
-    <article class="card mb-6">
+     <div class="card mb-6">
         <div class="card-body bg-gray-100">
             <h3 class="text-center font-bold">Evaluacion {{$evaluation->name}} de curso {{$evaluation->course->title}}</h3>
         </div>
-    </article>
+    </div>
 
-    <div class="container py-4">
-        <div class="pb-4 flex md:-mx-4">
-            <div class="w-full mb-2 border rounded shadow-sm">
-                <div id="relojito" class="float-right" wire:model="time"><time>00:00:00</time></div>
-                {{$time}}
-                <div class="card-body">
-                    <p id="textito" class="mb-4">Da click para comenzar tu examen, te recomendamos no distraerte para poder terminar.</p>
-                    <button id="iniciar" type="button" class="float-left mb-4 px-6 py-2.5 bg-blue-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-lg hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Iniciar</button>
+    <div class="flex justify-center" >
+        <div class="block rounded-lg shadow-lg bg-white max-w-sm text-center">
+            <div class="py-3 px-6 border-b border-gray-300" x-show="!open">
+                <h1 id="relojito" class="content-center">Tiempo : <time>00:00:00</time>
+            </div>
+            <div class="p-6" x-show="open">
+                <div id="textito" class="ml-4">
+                    <p class="mb-4">Da click para comenzar tu examen, te recomendamos no distraerte para poder terminar.</p>
+                    <button id="iniciar" x-on:click="open = !open" type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Iniciar</button>    
                 </div>
             </div>
             
         </div>
     </div>
 
-    <div class="container py-4">
-        <div class="pb-4 md:flex md:-mx-4">
+    <div class="container py-4" x-show="!open">
+        <div id="preguntas" class="pb-4 hidden md:flex md:-mx-4">
             <div class="w-full mb-2 border rounded shadow-sm">
                 @if ($current->url)
                 <a href="#" class="mb-4 cursor-none">

@@ -17,8 +17,11 @@ return new class extends Migration
             $table->id();
 
             $table->double("score",5,2);
-            $table->integer("chance");
-            $table->string("dateLastTry");
+            $table->text("respuestas")->nullable();
+            $table->text("inicio")->nullable();
+            $table->text("fin")->nullable();
+            $table->tinyInteger("chance")->default(1);
+            $table->string("dateLastTry")->nullable();
             $table->tinyInteger('status')->default(1);//1. Activo, 2. Inactivo, 
             
             $table->unsignedBigInteger("evaluation_id");
