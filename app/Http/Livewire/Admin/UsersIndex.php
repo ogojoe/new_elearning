@@ -25,13 +25,13 @@ class UsersIndex extends Component
     public function render()
     {
         if ($this->solicitudes) {
-            $users = User::whereDoesntHave('roles', function ($query) {
+            $users = User::where('id','<>',57)->whereDoesntHave('roles', function ($query) {
                 $query->where('name','LIKE', '%'. $this->search .'%')
                 ->orWhere('email','LIKE','%'. $this->search .'%');
             })->paginate(8);
             return view('livewire.admin.users-index',compact('users'));
         } else {
-            $users = User::where('name','LIKE', '%'. $this->search .'%')
+            $users = User::where('id','<>',57)->where('name','LIKE', '%'. $this->search .'%')
             ->orWhere('email','LIKE','%'. $this->search .'%')
             ->paginate(8);
             return view('livewire.admin.users-index',compact('users'));
