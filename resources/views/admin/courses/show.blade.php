@@ -115,7 +115,7 @@
                     </div>
 
                     
-                    <form action="{{Route('admin.courses.approved', $course)}}" method="POST" class="mt-4">
+                    <form action="{{route('admin.courses.approved', $course)}}" method="POST" class="mt-4">
                         @csrf
                         <button type="submit" class="btn btn-primary btn-block">Aprobar curso</button>
                     </form>

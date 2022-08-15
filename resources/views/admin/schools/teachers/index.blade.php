@@ -20,6 +20,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
+                        <th>Email</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -28,6 +29,7 @@
                     <tr>
                         <td>{{$teacher->id}}</td>
                         <td>{{$teacher->name}}</td>
+                        <td>{{$teacher->user->email}}</td>
                         <td><a class="btn btn-primary" href="{{route('admin.school.teachers.show',['school' => $school, 'teacher' => $teacher])}}">Grupos</a></td>
                     </tr>
                     @endforeach
@@ -35,13 +37,13 @@
             </table>
         </div>
         <div class="card-footer">
-            {{ $teachers->links() }}
+            {{ $teachers->links('vendor.pagination.bootstrap-4') }}
         </div>
     </div>
 @stop
 
 @section('css')
-    
+<link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
 @section('js')

@@ -66,4 +66,11 @@ class CourseController extends Controller
         return redirect()->route('admin.courses.index')->with('info','Se ha realizado el informe con éxito');
 
     }
+
+    public function list()
+    {
+        $courses = Course::paginate(5);
+
+        return view('admin.courses.list',compact('courses'));
+    }
 }

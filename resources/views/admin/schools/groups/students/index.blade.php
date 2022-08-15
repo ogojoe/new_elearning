@@ -39,7 +39,7 @@
                             {{$student->user->email}}
                         </td>
                         <td width="10px">
-                            {{-- <a class="btn btn-primary btn-sm" href="{{route('admin.categories.edit',$category)}}">Editar</a> --}}
+                            <a class="btn btn-primary" href="{{route('admin.school.students.show',['school' => $school,'student'=>$student])}}">Revisar</a>
                         </td>
                         <td width="10px">
                             {{-- <form action="{{route('admin.categories.destroy',$category)}}" method="POST">
@@ -58,11 +58,16 @@
             
         </table>
     </div>
+
+    {{-- <div class="card-footer">
+        {{ $students->links('vendor.pagination.bootstrap-4') }}
+    </div> --}}
+
 </div>
 @stop
 
 @section('css')
-    
+    <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
 @section('js')

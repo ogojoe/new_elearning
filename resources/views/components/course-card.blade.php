@@ -1,10 +1,10 @@
 @props(['course'])
 
 <article class="card flex flex-col">
-    <img class="h-32 w-full object-cover" src="{{ Storage::url($course->image->url)}}" alt="">
+    <img class="h-32 w-full object-cover" src="{{ $course->image->url?Storage::url($course->image->url):"/img/cursos/school-g87677ea84_1920.jpg"}}" alt="">
     <div class="card-body flex-1 flex flex-col">
         <h1 class="card-title">{{ Str::limit($course->title,25)}}</h1>
-        <p class="text-gray-500 text-sm mb-2 mt-auto">Creator:{{$course->instructor->name}}</p>
+       {{--  <p class="text-gray-500 text-sm mb-2 mt-auto">Creator:{{$course->instructor->name}}</p> --}}
         
         <div class="flex mb-2">
             <ul class="flex text-sm">
@@ -17,7 +17,7 @@
 
             <p class="text-sm text-gray-500 ml-auto">
                 <i class="fas fa-users"></i>
-                ({{$course->students_count}})
+                {{-- ({{$course->students_count}}) --}}
             </p>
         </div>
         

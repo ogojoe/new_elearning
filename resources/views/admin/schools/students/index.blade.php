@@ -20,6 +20,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
+                        <th>Email</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -28,20 +29,21 @@
                     <tr>
                         <td>{{$student->id}}</td>
                         <td>{{$student->name}}</td>
-                        <td><a class="btn btn-primary" href="#">Revisar</a></td>
+                        <td>{{$student->user->email}}</td>
+                        <td><a class="btn btn-primary" href="{{route('admin.school.students.show',['school' => $school,'student'=>$student])}}">Revisar</a></td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
         <div class="card-footer">
-            {{ $students->links() }}
+            {{ $students->links('vendor.pagination.bootstrap-4') }}
         </div>
     </div>
 @stop
 
 @section('css')
-    
+<link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
 @section('js')

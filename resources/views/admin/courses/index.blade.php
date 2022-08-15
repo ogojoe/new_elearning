@@ -20,7 +20,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Categoría</th>
+                        <th>Idioma</th>
                         <th></th>
                     </tr>
                 </thead>

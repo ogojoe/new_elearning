@@ -64,6 +64,7 @@ Route::resource('levels',LevelController::class)->names('levels');
 Route::resource('prices',PriceController::class)->names('prices');
 
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
+Route::get('courses/list', [CourseController::class, 'list'])->name('courses.list');
 
 Route::get('courses/{course}', [CourseController::class, 'show'])->name('courses.show');
 

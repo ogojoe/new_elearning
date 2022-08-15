@@ -317,11 +317,12 @@ return [
             'can' => 'Actualizar cursos',
             'icon' => 'fas fa-fw fa-chart-line',
         ],
-        /* [
-            'text' => 'Precios',
-            'route'  => 'admin.prices.index',
-            'icon' => 'fab fa-fw fa-cc-visa',
-        ], */
+        [
+            'text' => 'Cursos',
+            'route'  => 'admin.courses.list',
+            'can' => 'Actualizar cursos',
+            'icon' => 'fab fa-fw fa-audible',
+        ],
         [
             'text' => 'Pendientes de aprobación',
             'route'  => 'admin.courses.index',
@@ -329,7 +330,6 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         
-       
         
     ],
 
