@@ -6,7 +6,7 @@
     <hr class="mt-2 mb-6">
 
     @foreach ($evaluation->questions->where('skill_id', 1) as $item)
-    <article class="card mb-6" x-data="{open: true}" >
+    <article class="card mb-6" x-data="{open: false}" >
         <div class="card-body bg-gray-100" x-on:click.outside="open = false">
             @if ($question->id == $item->id)
                 <form wire:submit.prevent = "update">
@@ -24,8 +24,12 @@
                 </div>
             </header>
 
+            {{-- <div x-show="open">
+                @livewire('instructor.question-resource', ['question' => $item], key('question-resource' . $item->id))
+            </div> --}}
+
             <div x-show="open">
-                @livewire('instructor.evaluation-answers', ['question' => $item], key($item->id))
+                @livewire('instructor.evaluation-answers', ['question' => $item], key('eval-answer'.$item->id))
             </div>
 
             @endif
@@ -64,7 +68,7 @@
     <hr class="mt-2 mb-6">
 
     @foreach ($evaluation->questions->where('skill_id', 2) as $item)
-    <article class="card mb-6" x-data="{open: true}" >
+    <article class="card mb-6" x-data="{open: false}" >
         <div class="card-body bg-gray-100" x-on:click.outside="open = false">
             @if ($question->id == $item->id)
                 <form wire:submit.prevent = "update">
@@ -83,7 +87,11 @@
             </header>
 
             <div x-show="open">
-                @livewire('instructor.evaluation-answers', ['question' => $item], key($item->id))
+                @livewire('instructor.question-resource', ['question' => $item], key('question-resource' . $item->id))
+            </div>
+
+            <div x-show="open">
+                @livewire('instructor.evaluation-answers', ['question' => $item], key('eval-answer'.$item->id))
             </div>
 
             @endif
@@ -120,7 +128,7 @@
     <hr class="mt-2 mb-6">
 
     @foreach ($evaluation->questions->where('skill_id', 3) as $item)
-    <article class="card mb-6" x-data="{open: true}" >
+    <article class="card mb-6" x-data="{open: false}" >
         <div class="card-body bg-gray-100" x-on:click.outside="open = false">
             @if ($question->id == $item->id)
                 <form wire:submit.prevent = "update">
@@ -137,10 +145,15 @@
                     <i class="fas fa-eraser cursor-pointer text-red-500" wire:click="destroy({{$item}})"></i>
                 </div>
             </header>
+            {{-- <div x-show="open">
+                @livewire('instructor.question-resource', ['question' => $item], key('question-resource' . $item->id))
+            </div> --}}
 
             <div x-show="open">
-                @livewire('instructor.evaluation-answers', ['question' => $item], key($item->id))
+                @livewire('instructor.evaluation-answers', ['question' => $item], key('eval-answer'.$item->id))
             </div>
+
+            
 
             @endif
         </div>

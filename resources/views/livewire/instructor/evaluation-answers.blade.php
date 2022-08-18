@@ -15,7 +15,7 @@
                         @enderror
 
                         <label class="text-sm">
-                            <input type="checkbox" wire:model="answer.is_correct" value="1">
+                            <input type="checkbox" wire:model="answer.is_correct" value="{{$item->is_correct}}">
                             <span class="font-weight-bold">Marcar como correcta</span> 
                         </label>
 
@@ -29,16 +29,20 @@
                 @else
                     <header>
                         <h1 x-on:click="open = !open" class="cursor-pointer">
-                            <i class="far fa-play-circle text-blue-500 mr-1"></i> 
+                            @if ($item->is_correct)
+                                <i class="far fa-check-circle text-blue-500 mr-1"></i> 
+                                @else
+                                <i class="far fa-circle text-blue-500 mr-1"></i> 
+                            @endif
                             Respuesta: {{$item->name}}
                         </h1>
                     </header>
 
                     <div x-show="open">
                         <hr class="my-2">
-                        <span class="badge badge-pill badge-primary"> 
+                        {{-- <span class="badge badge-pill badge-primary"> 
                             {{$item->is_correct ? 'Respuesta correcta' : ''}}
-                        </span>
+                        </span> --}}
                         
                         <div class="my-2">
                             <button class="btn btn-primary text-sm" wire:click="edit({{$item}})">Editar</button>
