@@ -15,7 +15,7 @@
                         @enderror
 
                         <label class="text-sm">
-                            <input type="checkbox" wire:model="answer.is_correct" value="{{$item->is_correct}}">
+                            <input type="checkbox" wire:model="answer.is_correct">
                             <span class="font-weight-bold">Marcar como correcta</span> 
                         </label>
 
