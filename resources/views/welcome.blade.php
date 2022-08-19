@@ -13,7 +13,7 @@
         </div>
     </section> 
 
-    <section class="mt-8">
+    {{-- <section class="mt-8">
         <h1 class="text-gray-600 text-center text-3xl bt-6 mb-4">Contenido</h1>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
             <article>
@@ -63,7 +63,7 @@
             </article>
 
         </div>
-    </section>
+    </section> --}}
 
     @guest
         <section class="mt-24 bg-gray-700 py-12">
