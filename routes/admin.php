@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\TOEFLController;
 
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\TeachersController;
@@ -20,7 +21,7 @@ use App\Http\Controllers\Admin\PriceController;
 use App\Http\Controllers\Admin\School\GroupStudentsController;
 use App\Http\Controllers\Admin\School\SchoolStudentsController;
 use App\Http\Controllers\Admin\School\SchoolTeachersController;
-
+use App\Http\Livewire\Admin\ToeflQuizz;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,4 +78,7 @@ Route::post('courses/{course}/reject', [CourseController::class, 'reject'])->nam
 Route::get('solicitudes/get', [NotificationsContoller::class,'getNotificationsData'])->name('solicitudes.get');
 Route::get('solicitudes/show', [NotificationsContoller::class,'showSolicitudes'])->name('solicitudes.show');
 
+Route::resource('toefl', TOEFLController::class)->names('toefls');
 
+Route::get('toefl/{toefl}/quizz', ToeflQuizz::class)->middleware('can:Ver Dashboard')
+->name('toefl.quizz');

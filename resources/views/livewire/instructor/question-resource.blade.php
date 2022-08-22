@@ -6,12 +6,12 @@
         <div x-show="open">
             <hr class="my-2">
 
-            @if ($question->resource)
+            @if ($question->url)
             <div class="flex justify-between items-center">
-                <p>
-                    <i wire:click="download" class="fas fa-download text-gray-500 mr-2 cursor-pointer"></i>
-                    {{$question->resource->url}}
-                </p>
+                <audio controls>
+                    <source src="{{asset('/storage/questions/'.$question->url)}}" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
                 <i wire:click="destroy" class="fas fa-trash text-red-500 cursor-pointer"></i>
 
             </div> 

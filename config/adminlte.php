@@ -253,14 +253,14 @@ return [
             'header' => 'Configuración de usuarios',
             'can'    => 'Listar Role',
         ],
-        [
+        /* [
             'text'    => 'Lista de Roles',
             'route'   => 'admin.roles.index',
             'icon'    => 'fas fa-fw fa-user-cog',
             'can'     => 'Listar Role',
             'active'  => ['admin/roles*']
             
-        ],
+        ], */
 
         [
             'text'    => 'Usuarios',
@@ -289,6 +289,19 @@ return [
                     'active' => ['admin/students*']
                 ],
             ],
+        ],
+        [
+            'header' => 'Opciones TOEFL',
+            'can'    => 'Listar Role',
+
+        ],
+        [
+            'text' => 'Lista de TOEFL',
+            'route'  => 'admin.toefls.index',
+            'can' => 'Leer Usuarios',
+            'icon' => 'far fa-fw fa-clipboard',
+            'active' => ['admin/toefls*']
+            
         ],
         [
             'header' => 'Opciones de escuela',

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Instructor;
 
 use App\Models\Question;
 use Livewire\Component;
+use Illuminate\Support\Facades\Storage;
 
 use Livewire\WithFileUploads;
 
@@ -36,7 +37,15 @@ class QuestionResource extends Component
 
         $url = $this->file->storeAs('public/questions', $this->question->evaluation->id.'_'.$this->question->id.'.'.$this->file->getClientOriginalExtension());
         
-        $this->question->update(['url' => $url]);
+        $this->question->update(['url' => $this->question->evaluation->id.'_'.$this->question->id.'.'.$this->file->getClientOriginalExtension()]);
+
+        $this->question = Question::find($this->question->id);
+    }
+
+    public function destroy()
+    {
+        Storage::delete($this->question->url);
+        $this->question->update(['url'=>'']);
 
         $this->question = Question::find($this->question->id);
     }

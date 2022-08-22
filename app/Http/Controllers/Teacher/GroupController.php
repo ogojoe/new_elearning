@@ -29,7 +29,8 @@ class GroupController extends Controller
         }else{
             Score::create([
                 'evaluation_id' => $request->evaluation_id,
-                'student_id' => $request->student_id
+                'student_id' => $request->student_id,
+                'chance'=>1
             ]);
             return back()->with('info', 'El exámen se asigno con éxito.');
         }
