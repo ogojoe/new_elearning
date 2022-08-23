@@ -77,7 +77,7 @@
 
                     <div class="flex items-center mt-4">
                         <label class="text-sm">
-                            <input type="checkbox" wire:model="is_correct" value="1">
+                            <input type="checkbox" wire:model="is_correct">
                            <span class="font-weight-bold">Marcar como correcta</span> 
                         </label>
                     </div>
