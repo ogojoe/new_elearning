@@ -12,7 +12,7 @@ class Audience extends Model
 
     use HasFactory;
 
-    public function coure()
+    public function course()
     {
         return $this->belongsTo("App\Models\Course");
     }

@@ -20,7 +20,7 @@
                     <tr>
                         <th>#</th>
                         <th>Nombre</th>
-                        <th colspan="3"></th>
+                        <th colspan="4"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +31,9 @@
                             </td>
                             <td>
                                 {{$toefl->name}}
+                            </td>
+                            <td width="10px">
+                                <a class="btn btn-primary btn-sm" href="{{ route('admin.toefls.show', $toefl) }}">Asignados</a>
                             </td>
                             <td width="10px">
                                 <a class="btn btn-primary btn-sm" href="{{ route('admin.toefl.quizz', $toefl) }}">Quizz</a>

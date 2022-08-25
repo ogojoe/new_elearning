@@ -90,6 +90,10 @@ class User extends Authenticatable
         return $this->hasMany("App\Models\Course");
     }
 
+    public function toefl_assigned(){
+        return $this->belongsToMany("App\Models\Toefl");
+    }
+
     public function lessons()
     {
         return $this->belongsToMany("App\Models\Lesson");
@@ -113,6 +117,11 @@ class User extends Authenticatable
     public function mis_cursos()
     {
         return $this->belongsToMany("App\Models\Course",'course_user');
+    }
+
+    public function mis_toefls()
+    {
+        return $this->belongsToMany("App\Models\Toefl",'toefl_user');
     }
 
 }

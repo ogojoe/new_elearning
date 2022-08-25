@@ -89,5 +89,17 @@
     </section>
     @endguest
 
+    @can('Tomar Cursos')
+    <section class="mt-4">
+    <h1 class="bg-gray-500 text-center text-white text-3xl mb-4">Exámenes Toefl asignados</h1>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
+            @foreach ($toefls as $toefl)
+                <x-toefl-card :toefl="$toefl"/>
+            @endforeach
+        </div>
+    </section>
+    @endcan
+    
+
 </x-app-layout>
 

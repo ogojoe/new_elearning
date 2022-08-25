@@ -15,4 +15,9 @@ class Toefl extends Model
     {
         return $this->hasMany("App\Models\QuestionToefl");
     }
+
+    //Relacion muchos a muchos
+    public function evaluateds(){
+        return $this->belongsToMany("App\Models\User",'toefl_user');
+    }
 }

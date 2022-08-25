@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\TOEFLController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
@@ -32,4 +33,6 @@ Route::post('course/{course}/enrolled',[CourseController::class,'enrolled'])->mi
 Route::get('course-status/{course}', CourseStatus::class)->name('courses.status')->middleware('auth');
 
 Route::get('evaluation-status/{evaluation}', EvaluationStatus::class)->name('evaluation.status')->middleware('auth');
+
+Route::get('toefl-test/{toefl}', [TOEFLController::class,'test'])->name('toefl.test')->middleware('auth');
 
