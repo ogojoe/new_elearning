@@ -3,11 +3,11 @@
 namespace App\Http\Livewire;
 
 use App\Models\Answer;
-use Illuminate\Support\Facades\Auth;
-
 use App\Models\Evaluation;
 use App\Models\Question;
 use App\Models\Score;
+
+use Illuminate\Support\Facades\Auth;
 
 use Carbon\Carbon;
 
@@ -20,6 +20,7 @@ class EvaluationStatus extends Component
 
     public function mount(Evaluation $evaluation)
     {
+        $this->puntuacion = 0;
         $this->evaluation = $evaluation;
         $this->current = $evaluation->questions->first();
 

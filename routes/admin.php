@@ -84,3 +84,4 @@ Route::get('toefl/{toefl}/quizz', ToeflQuizz::class)->middleware('can:Ver Dashbo
 ->name('toefl.quizz');
 
 Route::post('toefl/asignar', [TOEFLController::class, 'asignar'])->name('toefls.asignar');
+

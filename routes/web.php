@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\TOEFLController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
 use App\Http\Livewire\CourseStatus;
 use App\Http\Livewire\EvaluationStatus;
+use App\Http\Livewire\ToeflStatus;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,5 +34,4 @@ Route::get('course-status/{course}', CourseStatus::class)->name('courses.status'
 
 Route::get('evaluation-status/{evaluation}', EvaluationStatus::class)->name('evaluation.status')->middleware('auth');
 
-Route::get('toefl-test/{toefl}', [TOEFLController::class,'test'])->name('toefl.test')->middleware('auth');
-
+Route::get('toefl-evaluation/{toefl}', ToeflStatus::class)->name('toefl.evaluation.status')->middleware('auth');

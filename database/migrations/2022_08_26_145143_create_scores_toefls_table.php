@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('scores', function (Blueprint $table) {
+        Schema::create('scores_toefls', function (Blueprint $table) {
             $table->id();
 
             $table->double("score",5,2)->default(0);
@@ -24,11 +24,11 @@ return new class extends Migration
             $table->string("dateLastTry")->nullable();
             $table->tinyInteger('status')->default(1);//1. Activo, 2. Inactivo, 
             
-            $table->unsignedBigInteger("evaluation_id");
-            $table->unsignedBigInteger("student_id");
+            $table->unsignedBigInteger("toefl_id");
+            $table->unsignedBigInteger("user_id");
 
-            $table->foreign("evaluation_id")->references("id")->on("evaluations")->onDelete("cascade");
-            $table->foreign("student_id")->references("id")->on("students")->onDelete("cascade");
+            $table->foreign("toefl_id")->references("id")->on("toefls")->onDelete("cascade");
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
 
             $table->timestamps();
         });
@@ -41,6 +41,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('scores');
+        Schema::dropIfExists('scores_toefls');
     }
 };

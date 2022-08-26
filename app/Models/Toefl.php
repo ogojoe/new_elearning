@@ -20,4 +20,10 @@ class Toefl extends Model
     public function evaluateds(){
         return $this->belongsToMany("App\Models\User",'toefl_user');
     }
+
+    public function score()
+    {
+        return $this->hasMany(ScoresToefl::class);
+    }
+
 }

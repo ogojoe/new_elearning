@@ -25,7 +25,7 @@ class UsersAsignated extends Component
     public function render()
     {
         $users = User::all();
-        $asignateds = User::whereHas('toefl_assigned')->paginate(8);
+        $asignateds = User::whereHas('toefl_assigned')->with('toefl_assigned')->paginate(8);
         return view('livewire.admin.toefl.users-asignated',compact('asignateds','users'));
     }
 

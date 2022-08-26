@@ -124,4 +124,9 @@ class User extends Authenticatable
         return $this->belongsToMany("App\Models\Toefl",'toefl_user');
     }
 
+    public function scoreToefl()
+    {
+        return $this->belongsTo("App\Models\ScoresToefl");
+    }
+
 }

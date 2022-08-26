@@ -18,7 +18,7 @@
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Email</th>
-                            <th></th>
+                            <th>Puntuación</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,8 +27,8 @@
                                     <td>{{$user->id}}</td>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
-                                    <td width="10px">
-                                        {{-- <a class="btn btn-primary" href="{{route('admin.users.edit',$user)}}">Editar</a> --}}
+                                    <td>
+                                        {{$user->scoreToefl}}
                                     </td>
                                 </tr>
                         @endforeach
