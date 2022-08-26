@@ -2,14 +2,21 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Answer;
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\Evaluation;
 use App\Models\Question;
+use App\Models\Score;
+
+use Carbon\Carbon;
+
 use Livewire\Component;
 
 class EvaluationStatus extends Component
 {
-    public $evaluation, $time, $current;
-    public $selected=[];
+    public $evaluation,$inicio, $time, $current, $puntuacion;
+    public $answers=[];
 
     public function mount(Evaluation $evaluation)
     {
@@ -26,6 +33,30 @@ class EvaluationStatus extends Component
     /* Metodos */
     public function changeQuestion(Question $question){
         $this->current = $question;        
+    }
+
+    public function start()
+    {
+        $this->inicio = Carbon::now();
+    }
+
+    public function terminar()
+    {
+        $score = Score::where('evaluation_id',$this->evaluation->id)->where('student_id',Auth::user()->student->id)->first();
+
+        foreach ($this->answers as $key => $value) {
+            $answer = Answer::find($value);
+            $answer->is_correct ? $this->puntuacion++ : $this->puntuacion;
+        }
+
+        $score->update([
+            'score'=>$this->puntuacion,
+            'respuestas'=> $this->answers,
+            'inicio'=>$this->inicio,
+            'fin'=>Carbon::now()
+        ]);
+
+        return redirect()->route('student.courses.index')->with('info','Exámen respondido. Comunicate con direccion para obtener resultados. Gracias.');
     }
 
 

@@ -15,7 +15,7 @@
                 <div id="textito" class="ml-4">
                     @if (count($evaluation->questions))
                         <p class="mb-4">Da click para comenzar tu examen, te recomendamos no distraerte para poder terminar.</p>
-                        <button id="iniciar" x-on:click="open = !open" type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Iniciar</button>                         
+                        <button wire:click="start()" id="iniciar" x-on:click="open = !open" type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Iniciar</button>                         
                     @else
                     <p class="mb-4">Aun estamos preparando tu examen, por favor vuelve mas tarde.</p>
                     @endif
@@ -28,7 +28,7 @@
 
     <div class="container py-4" x-show="!open">
         @if (count($evaluation->questions))
-            <div id="preguntas" class="pb-4 hidden md:flex md:-mx-4">
+            <div id="preguntas" class="pb-4 hidden md:flex md:4">
                 <div class="w-full mb-2 border rounded shadow-sm">
                     <hr>
                     <div class="px-4 py-4">
@@ -44,13 +44,14 @@
                             </p>
                         </div>
                         <hr>
-                        <div class="mt-4 mb-4 flex justify-center">
                             <ul class="bg-white rounded-lg border border-gray-200 text-gray-900 w-full">
                                 @foreach ($current->answers as $answer)
                                     <li class="px-2 py-2 border-b border-gray-200 w-full 
-                                    {{$loop->first ?'rounded-t-lg':''}} {{$loop->last ?'rounded-b-lg':''}}
-                                    {{in_array($answer->id,$selected)? 'bg-blue-600 text-white':''}}">
-                                        {{$answer->name}}
+                                    {{$loop->first ?'rounded-t-lg':''}} {{$loop->last ?'rounded-b-lg':''}}">
+                                    <input class="form-check-input" wire:model="answers.{{ $current->id }}" name="{{$current->id}}" type="radio" value="{{$answer->id}}">
+                                    <label class="ml-2 h-6">
+                                      {{$answer->name}}
+                                    </label>
                                     </li>
                                 @endforeach
                             </ul>
@@ -66,8 +67,11 @@
                             <div></div>
                             <div>
                                 @if ($this->next)
-                                <button type="button" wire:click="changeQuestion({{$this->next->id}})" class="float-right px-6 py-2.5 bg-blue-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-lg hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Siguiente</button>
+                                    <button type="button" wire:click="changeQuestion({{$this->next->id}})" class="float-right px-6 py-2.5 bg-blue-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-lg hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Siguiente</button>
+                                @else
+                                    <button type="button" wire:click="terminar()" class="float-right px-6 py-2.5 bg-blue-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-lg hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Terminar</button>
                                 @endif
+                                
                             </div>
                         </div>
                     </div>
@@ -79,6 +83,8 @@
             <h1>Aun estamos preparando el material, porfavor vuelve más tarde.</h1>
         @endif
     </div>
+
+    
     
 
 
