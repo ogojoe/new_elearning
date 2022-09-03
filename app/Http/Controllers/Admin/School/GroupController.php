@@ -74,4 +74,15 @@ class GroupController extends Controller
     {
         //
     }
+
+    public function asignarTeacher(Request $request){
+        
+        $group = Group::find($request->group_id);
+
+        $group->teacher_id = $request->docente_id;
+        
+        $group->save();
+
+        return redirect()->route('admin.school.groups.list', $request->school_id )->with('info','Docente asignado con éxito.');
+    }
 }

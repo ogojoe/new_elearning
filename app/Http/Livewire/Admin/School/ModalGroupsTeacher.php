@@ -9,9 +9,8 @@ use Livewire\Component;
 
 class ModalGroupsTeacher extends Component
 {
-    public $group, $school, $teachers, $docente, $teacherSelectedId;
+    public $group, $school, $teachers;
 
-    protected $listeners = ['selectTeacher' => 'update'];
 
     protected $rules = [
         'docente' => 'required',
@@ -28,9 +27,7 @@ class ModalGroupsTeacher extends Component
         return view('livewire.admin.school.modal-groups-teacher');
     }
 
-    public function update($prueba){
-
-        $this->docente = $prueba;
+    public function update(){
         
         $this->validate();
 

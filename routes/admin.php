@@ -58,6 +58,8 @@ Route::group(['prefix' => '{school}'], function () {
     Route::resource('students', SchoolStudentsController::class)->names('school.students');
     Route::resource('teachers', SchoolTeachersController::class)->names('school.teachers');
 });
+
+Route::post('group/asignarTeacher', [GroupController::class, 'asignarTeacher'])->name('group.asignarTeacher');
     
 
 Route::resource('categories',CategoryController::class)->names('categories');
