@@ -20,7 +20,7 @@ class CourseStatus extends Component
     public function mount(Course $course)
     {
         $this->course = $course;
-
+        
         foreach($course->lessons as $lesson){
             if(!$lesson->completed){
                 $this->current = $lesson;
