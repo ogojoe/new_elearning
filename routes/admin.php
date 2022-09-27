@@ -68,6 +68,7 @@ Route::resource('prices',PriceController::class)->names('prices');
 
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
 Route::get('courses/list', [CourseController::class, 'list'])->name('courses.list');
+Route::delete('courses/{course}/destroy', [CourseController::class, 'destroy'])->name('courses.destroy');
 
 Route::get('courses/{course}', [CourseController::class, 'show'])->name('courses.show');
 

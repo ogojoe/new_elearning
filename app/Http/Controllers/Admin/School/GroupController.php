@@ -70,9 +70,11 @@ class GroupController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function destroy(School $school,Group $group)
     {
-        //
+        Group::find($group->id)->delete();
+  
+        return redirect()->route('admin.schools.show',$school);
     }
 
     public function asignarTeacher(Request $request){

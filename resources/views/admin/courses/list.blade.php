@@ -49,7 +49,11 @@
                             </td>
                             <td>
                                 <a class="btn btn-primary" href="{{route('admin.courses.show',$course)}}">Revisar</a>
-                                <button class="btn btn-danger" onclick="elimina({{$course}});">Eliminar</button>
+                                <form action="{{route('admin.courses.destroy',$course)}}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger show_confirm" type="submit">Eliminar</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -68,21 +72,25 @@
 
 @section('js')
     <script>
-        function elimina(course){
-            Swal.fire({
+
+        $('.show_confirm').click(function(event) {
+          var form =  $(this).closest("form");
+          event.preventDefault();
+          Swal.fire({
             title: '¿Estas seguro de eliminar este curso?',
             showDenyButton: true,
             confirmButtonColor: '#008000',
             confirmButtonText: 'Eliminar',
             denyButtonText: `Cancelar`,
-            }).then((result) => {
+          })
+          .then((result) => {
             if (result.isConfirmed) {
-                
-            } else if (result.isDenied) {
+              form.submit();
+            }else if (result.isDenied) {
                 Swal.fire('El curso no se eliminó', '', 'info')
             }
-            })
-        }
+          });
+      });
     </script>
 
 @stop

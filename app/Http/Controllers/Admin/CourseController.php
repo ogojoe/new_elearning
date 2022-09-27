@@ -73,4 +73,11 @@ class CourseController extends Controller
 
         return view('admin.courses.list',compact('courses'));
     }
+
+    public function destroy(Course $course)
+    {
+        Course::find($course->id)->delete();
+  
+        return back();
+    }
 }

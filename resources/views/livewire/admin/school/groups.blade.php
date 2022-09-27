@@ -12,12 +12,10 @@
                     <div class="bg-gray disabled color-palette">
                         <span>Teacher:
                         @if ($group->teacher_id)
-                        {{$group->maestro->name}} 
+                            {{$group->maestro->name}} 
+                        <button role="button" class="elmodal" data-toefl="{{$group}}" title="Click para editar" data-toggle="modal"data-target="#modalCustom">Editar docente</button>
                         @else
-                        {{-- <span role="button" title="Da click para asignar!" data-toggle="modal" data-target="#modal-default{{$group->id}}">
-                            Pendiente de asignar
-                        </span> --}}
-                        <span role="button" class=" elmodal" data-toefl="{{$group}}" title="Click para asignar" data-toggle="modal"data-target="#modalCustom">Asignar docente</span>
+                        <button role="button" class="elmodal" data-toefl="{{$group}}" title="Click para asignar" data-toggle="modal"data-target="#modalCustom">Asignar docente</button>
                         @endif  
                         </span>
                     </div>
@@ -30,10 +28,13 @@
                         <span>Curso:
                         @if ($group->course)
                         {{ Str::limit($group->course->title,25)}} 
+                        <button role="button" title="Da click para modificar!" data-toggle="modal" data-target="#modal-course{{$group->id}}">
+                            Modificar curso
+                        </button>
                         @else
-                        <span role="button" title="Da click para asignar!" data-toggle="modal" data-target="#modal-course{{$group->id}}">
-                            Pendiente de asignar
-                        </span>
+                        <button role="button" title="Da click para asignar!" data-toggle="modal" data-target="#modal-course{{$group->id}}">
+                            Asignar curso
+                        </button>
                         @endif 
                         </span>
                     </div>
